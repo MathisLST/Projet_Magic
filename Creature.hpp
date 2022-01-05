@@ -10,8 +10,8 @@ class Creature : public Carte {
     private :
         std::string m_nom;
         std::string m_type;
-        int const m_basedEndurance;
-        int const m_basedForce;
+        int m_basedEndurance;
+        int m_basedForce;
         int m_endurance;
         int m_force;
         int m_coutQuelconque;
