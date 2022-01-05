@@ -5,5 +5,4 @@
 
 bool Carte::getDegagee(){
     return m_degagee;
-    ddsndsu
 }
