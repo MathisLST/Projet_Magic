@@ -1,3 +1,6 @@
+#ifndef CAPACITE_HPP
+#define CAPACITE_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -6,3 +9,5 @@
 class Capacite{
 
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef CREATURE_HPP
+#define CREATURE_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -15,11 +18,12 @@ class Creature : public Carte {
         int m_endurance;
         int m_force;
         int m_coutQuelconque;
-        std::vector < Terrain > m_coutSpecifique;
-        std::vector < Capacite > m_capacites;
+        std::vector <std::string> m_coutSpecifique;
+        std::vector <Capacite&> m_capacites;
 	
     public :
-        Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance, int force, int coutQuelconque, std::vector < Terrain > coutSpecifique, std::vector < Capacite > capacites);
+        Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance, 
+        int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite&> capacites);
 
         std::string getNom();
         std::string getType();
@@ -28,7 +32,9 @@ class Creature : public Carte {
         int getEndurance();
         int getForce();
         int getCoutQuelconque();
-        std::vector < Terrain > getCoutSpecifique();
-        std::vector < Capacite > getCapacites();
+        std::vector <std::string> getCoutSpecifique();
+        std::vector <Capacite&> getCapacites();
         
 };
+
+#endif

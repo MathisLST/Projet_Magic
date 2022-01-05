@@ -1,3 +1,6 @@
+#ifndef BIBLIOTHEQUE_HPP
+#define BIBLIOTHEQUE_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include "Carte.hpp"
@@ -13,3 +16,5 @@ class Bibliotheque {
         void setBibliotheque(std::vector<Carte> cartes);
 
 };
+
+#endif

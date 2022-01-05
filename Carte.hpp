@@ -1,3 +1,6 @@
+#ifndef CARTE_HPP
+#define CARTE_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -9,3 +12,5 @@ class Carte {
     public :
         bool getDegagee();
 };
+
+#endif

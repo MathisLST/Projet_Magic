@@ -1,3 +1,6 @@
+#ifndef TERRAIN_HPP
+#define TERRAIN_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -12,3 +15,5 @@ class Terrain : public Carte {
         std::string getType();
         
 };
+
+#endif
