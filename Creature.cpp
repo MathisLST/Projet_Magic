@@ -3,7 +3,8 @@
 #include <vector>
 #include "Creature.hpp"
 
-Creature::Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance, int force, int coutQuelconque, std::vector < Terrain > coutSpecifique, std::vector < Capacite > capacites){
+Creature::Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance,
+ int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite&> capacites){
     m_nom = nom;
     m_type = type;
     m_basedEndurance = basedEndurance;
@@ -13,6 +14,7 @@ Creature::Creature (std::string nom, std::string type, int const basedEndurance 
     m_coutQuelconque = coutQuelconque;
     m_coutSpecifique = coutSpecifique;
     m_capacites = capacites;
+    
 }
 
 std::string Creature::getNom(){
@@ -36,9 +38,9 @@ int Creature::getForce(){
 int Creature::getCoutQuelconque(){
     return m_coutQuelconque;
 }
-Terrain Creature::getCoutSpecifique(){
+std::vector<std::string> Creature::getCoutSpecifique(){
     return m_coutSpecifique;
 }
-Capacite Creature::getCapacites(){
+std::vector<Capacite&> Creature::getCapacites(){
     return m_capacites;
 }
