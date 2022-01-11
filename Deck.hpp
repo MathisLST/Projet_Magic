@@ -11,7 +11,9 @@ class Deck {
         std::vector<Carte&> m_deck;
     public :
         Deck (std::vector<Carte&> deck);
-        std::vector<Carte&> getDeck();  
+        ~Deck();
+        std::vector<Carte&> getDeck();
+
 };
 
 #endif

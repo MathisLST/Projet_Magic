@@ -7,7 +7,7 @@
 #include "Carte.hpp"
 
 class Capacite{
-
+    public :
 };
 
 #endif

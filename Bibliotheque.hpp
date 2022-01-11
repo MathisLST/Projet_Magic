@@ -10,9 +10,9 @@ class Bibliotheque {
         std::vector<Carte> m_bibliotheque;
 
     public :
-        Bibliotheque();
+        Bibliotheque(std::vector<Carte> cartes);
         ~Bibliotheque();
-        const Bibliotheque& getBibliotheque();
+        std::vector<Carte> getBibliotheque();
 
 };
 
