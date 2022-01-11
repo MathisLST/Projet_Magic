@@ -34,6 +34,18 @@ class EnJeu{
         void setLCreatureJ1();
         void setLCreatureJ2();
 
+        void jeu(Joueur joueur1, Joueur joueur2){
+
+            joueur1.distribuer();
+            joueur2.distribuer();
+        
+            while ( joueur1.getPV() > 0 || joueur2.getPV() > 0){
+
+
+            }
+        }
+        
+
 };
 
 #endif
