@@ -3,9 +3,10 @@
 #include <vector>
 #include "Deck.hpp"
 
-Deck::Deck(std::vector<Carte&> deck){
+Deck::Deck( std::vector<Carte&> deck){
     m_deck = deck;
 }
+
 
 Deck::~Deck(){}
 

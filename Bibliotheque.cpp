@@ -1,14 +1,15 @@
 #include <iostream>
 #include <cstdlib>
 #include "Bibliotheque.hpp"
+#include "Deck.hpp"
 
-Bibliotheque::Bibliotheque(std::vector<Carte> cartes){
-    m_bibliotheque = cartes;
+Bibliotheque::Bibliotheque(Deck* deck){
+    m_bibliotheque = deck->getDeck();
 }
 
 Bibliotheque::~Bibliotheque(){}
 
-std::vector<Carte> Bibliotheque::getBibliotheque(){
+std::vector<Carte&> Bibliotheque::getBibliotheque(){
     return m_bibliotheque;
 }
 

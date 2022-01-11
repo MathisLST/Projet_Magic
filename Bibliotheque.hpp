@@ -7,12 +7,12 @@
 
 class Bibliotheque {
     private :
-        std::vector<Carte> m_bibliotheque;
+        std::vector<Carte&> m_bibliotheque;
 
     public :
-        Bibliotheque(std::vector<Carte> cartes);
+        Bibliotheque(Deck* deck);
         ~Bibliotheque();
-        std::vector<Carte> getBibliotheque();
+        std::vector<Carte&> getBibliotheque();
 
 };
 
