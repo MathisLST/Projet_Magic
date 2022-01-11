@@ -13,7 +13,6 @@ class Bibliotheque {
         Bibliotheque();
         ~Bibliotheque();
         const Bibliotheque& getBibliotheque();
-        void setBibliotheque(std::vector<Carte> cartes);
 
 };
 
