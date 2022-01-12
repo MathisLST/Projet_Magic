@@ -10,7 +10,7 @@ class Carte {
         bool m_degagee;
     
     public :
-        bool getDegagee();
+       virtual bool getDegagee() = 0;
 };
 
 #endif
