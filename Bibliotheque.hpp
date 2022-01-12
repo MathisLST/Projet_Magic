@@ -4,13 +4,15 @@
 #include <iostream>
 #include <cstdlib>
 #include "Carte.hpp"
+#include "Deck.hpp"
 
 class Bibliotheque {
     private :
         std::vector<Carte&> m_bibliotheque;
 
     public :
-        Bibliotheque(Deck* deck);
+    
+        Bibliotheque(Deck& deck);
         ~Bibliotheque();
         std::vector<Carte&> getBibliotheque();
 

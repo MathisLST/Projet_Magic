@@ -4,7 +4,7 @@
 #include "Creature.hpp"
 
 Creature::Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance,
- int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite&> capacites){
+ int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite*> capacites){
     m_nom = nom;
     m_type = type;
     m_basedEndurance = basedEndurance;
@@ -14,6 +14,7 @@ Creature::Creature (std::string nom, std::string type, int const basedEndurance 
     m_coutQuelconque = coutQuelconque;
     m_coutSpecifique = coutSpecifique;
     m_capacites = capacites;
+    Carte::setDegagee(false);
     
 }
 
@@ -38,9 +39,18 @@ int Creature::getForce(){
 int Creature::getCoutQuelconque(){
     return m_coutQuelconque;
 }
+
+bool Carte::getDegagee(){
+    return m_degagee;
+}
+
 std::vector<std::string> Creature::getCoutSpecifique(){
     return m_coutSpecifique;
 }
-std::vector<Capacite&> Creature::getCapacites(){
+std::vector<Capacite*> Creature::getCapacites(){
     return m_capacites;
+}
+
+void Carte::setDegagee(bool estDegagee){
+    m_degagee = estDegagee;
 }

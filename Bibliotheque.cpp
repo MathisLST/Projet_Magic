@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cstdlib>
 #include "Bibliotheque.hpp"
-#include "Deck.hpp"
 
-Bibliotheque::Bibliotheque(Deck* deck){
-    m_bibliotheque = deck->getDeck();
+
+
+Bibliotheque::Bibliotheque(Deck& deck){
+    m_bibliotheque = deck.getDeck();
 }
 
 Bibliotheque::~Bibliotheque(){}

@@ -11,6 +11,7 @@ class Carte {
     
     public :
        virtual bool getDegagee() = 0;
+       virtual void setDegagee(bool estDegagee) = 0;
 };
 
 #endif

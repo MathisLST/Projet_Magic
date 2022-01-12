@@ -3,6 +3,8 @@
 #include <vector>
 #include "Deck.hpp"
 
+Deck::Deck(){}
+
 Deck::Deck( std::vector<Carte&> deck){
     m_deck = deck;
 }
