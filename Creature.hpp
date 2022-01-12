@@ -38,6 +38,7 @@ class Creature : public Carte {
         std::vector <Capacite> getCapacites();
 
         void setDegagee(bool estDegagee);
+        bool getCreature();
         
 };
 

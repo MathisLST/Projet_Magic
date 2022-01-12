@@ -3,16 +3,17 @@
 #include <vector>
 #include "EnJeu.hpp"
 
-const class Affiche
+class Affiche
 {
 public:
- void afficheJeu(EnJeu jeu);
+ static void afficheJeu(EnJeu jeu);
 
- void afficheMain(Joueur joueur);
- void afficheBibliotheque(Joueur joueur);
- void afficheCarte(std::vector<Creature>, std::vector<Terrain>);
- void afficheCimetiere(std::vector<Carte> cimetiere);
- void afficheCombat();
+ static void afficheMain(Joueur joueur);
+ static void afficheCoutSpe(std::vector<std::string>);
+ static void afficheBibliotheque(Joueur joueur);
+ static void afficheCarte(std::vector<Creature*>, std::vector<Terrain*>);
+ static void afficheCimetiere(std::vector<Carte*> cimetiere);
+ static void afficheCombat();
 
 
     

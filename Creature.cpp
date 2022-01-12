@@ -3,7 +3,7 @@
 #include <vector>
 #include "Creature.hpp"
 
-Creature::Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance,
+Creature::Creature (std::string nom, std::string type, int basedEndurance ,int basedForce, int endurance,
  int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite> capacites){
     m_nom = nom;
     m_type = type;
@@ -15,6 +15,7 @@ Creature::Creature (std::string nom, std::string type, int const basedEndurance 
     m_coutSpecifique = coutSpecifique;
     m_capacites = capacites;
     setDegagee(false);
+    m_creature = true;
     
 }
 
@@ -53,4 +54,8 @@ std::vector<Capacite> Creature::getCapacites(){
 
 void Creature::setDegagee(bool estDegagee){
     m_degagee = estDegagee;
+}
+
+bool Creature::getCreature(){
+    return m_creature;
 }

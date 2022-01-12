@@ -10,7 +10,7 @@ Bibliotheque::Bibliotheque(Deck deck){
 
 Bibliotheque::~Bibliotheque(){}
 
-std::vector<Carte> Bibliotheque::getBibliotheque(){
+std::vector<Carte*> Bibliotheque::getBibliotheque(){
     return m_bibliotheque;
 }
 

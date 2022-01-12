@@ -16,7 +16,7 @@ class Terrain : public Carte {
         bool getDegagee();
         std::string getType();
         void setDegagee(bool estDegagee);
-        
+        bool getCreature();
 };
 
 #endif

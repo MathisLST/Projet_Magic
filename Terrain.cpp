@@ -6,6 +6,7 @@
 Terrain::Terrain (std::string type){
     m_type = type;
     setDegagee(false);
+    m_creature = false;
 }
 
 std::string Terrain::getType(){
@@ -18,4 +19,8 @@ bool Terrain::getDegagee(){
 
 void Terrain::setDegagee(bool estDegagee){
     m_degagee = estDegagee;
+}
+
+bool Terrain::getCreature(){
+    return m_creature;
 }
