@@ -13,15 +13,16 @@ class Joueur {
         int m_pv;
         Deck m_deck;
         Bibliotheque m_bibliotheque;
-        std::vector<Carte*> m_cimetiere;
-        std::vector<Carte*> m_main;
+        std::vector<Carte> m_cimetiere;
+        std::vector<Carte> m_main;
 
     public :
-        Joueur (int pv, Deck& deck);
+        Joueur();
+        Joueur (int pv, Deck deck);
         int getPV();
         Deck& getDeck();
-        std::vector<Carte*> getCimetiere();
-        std::vector<Carte*> getMain();
+        std::vector<Carte> getCimetiere();
+        std::vector<Carte> getMain();
         Bibliotheque& getBibliotheque();
         void distribuer();
     

@@ -8,12 +8,12 @@
 
 class Deck {
     private :
-        std::vector<Carte*> m_deck;
+        std::vector<Carte> m_deck;
     public :
         Deck();
-        Deck (std::vector<Carte*> deck);
+        Deck (std::vector<Carte> deck);
         ~Deck();
-        std::vector<Carte*> getDeck();
+        std::vector<Carte> getDeck();
 
 };
 

@@ -4,8 +4,9 @@
 #include "Joueur.hpp"
 
 
+        Joueur::Joueur(){}
 
-        Joueur::Joueur (int pv, Deck& deck){
+        Joueur::Joueur (int pv, Deck deck){
             m_pv = pv;
             m_deck = deck;
             m_bibliotheque = Bibliotheque(deck);
@@ -19,10 +20,10 @@
             return m_deck;
         }
 
-        std::vector<Carte*> Joueur::getCimetiere(){
+        std::vector<Carte> Joueur::getCimetiere(){
             return m_cimetiere;
         }
-        std::vector<Carte*> Joueur::getMain(){
+        std::vector<Carte> Joueur::getMain(){
             return m_main;
         }
 

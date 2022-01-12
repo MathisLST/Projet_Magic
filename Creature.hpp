@@ -20,11 +20,11 @@ class Creature : public Carte {
         int m_force;
         int m_coutQuelconque;
         std::vector <std::string> m_coutSpecifique;
-        std::vector <Capacite*> m_capacites;
+        std::vector <Capacite> m_capacites;
 	
     public :
         Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance, 
-        int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite*> capacites);
+        int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite> capacites);
 
         std::string getNom();
         std::string getType();
@@ -35,7 +35,7 @@ class Creature : public Carte {
         int getCoutQuelconque();
         bool getDegagee();
         std::vector <std::string> getCoutSpecifique();
-        std::vector <Capacite*> getCapacites();
+        std::vector <Capacite> getCapacites();
 
         void setDegagee(bool estDegagee);
         

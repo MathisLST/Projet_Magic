@@ -4,7 +4,7 @@
 #include "Creature.hpp"
 
 Creature::Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance,
- int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite*> capacites){
+ int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite> capacites){
     m_nom = nom;
     m_type = type;
     m_basedEndurance = basedEndurance;
@@ -47,7 +47,7 @@ bool Creature::getDegagee(){
 std::vector<std::string> Creature::getCoutSpecifique(){
     return m_coutSpecifique;
 }
-std::vector<Capacite*> Creature::getCapacites(){
+std::vector<Capacite> Creature::getCapacites(){
     return m_capacites;
 }
 
