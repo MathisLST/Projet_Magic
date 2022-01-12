@@ -10,8 +10,8 @@ public:
 
  void afficheMain(Joueur& joueur);
  void afficheBibliotheque(Bibliotheque& bibliotheque);
- void afficheCarte(std::vector<Creature&>, std::vector<Terrain&>);
- void afficheCimetiere(std::vector<Carte&> cimetiere);
+ void afficheCarte(std::vector<Creature*>, std::vector<Terrain*>);
+ void afficheCimetiere(std::vector<Carte*> cimetiere);
  void afficheCombat();
 
 

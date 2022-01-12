@@ -22,11 +22,11 @@
      std::cout << "Bibliotheque : " << joueur.getBibliotheque().size();
  }
 
- void Affiche::afficheCarte(std::vector<Creature&> lCreature, std::vector<Terrain&> lTerrain){
-     for(Creature& creature : lCreature){
+ void Affiche::afficheCarte(std::vector<Creature*> lCreature, std::vector<Terrain*> lTerrain){
+     for(Creature* creature : lCreature){
          std::cout << " | " << creature.getNom() << "(" << creature.getForce() << "," << creature.getEndurance() << ")";
      }
-     for(Terrain& terrain : lTerrain){
+     for(Terrain* terrain : lTerrain){
          std::cout << " | " << terrain.getType();
      }
  }

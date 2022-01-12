@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include "Bibliotheque.hpp"
 
-
+Bibliotheque::Bibliotheque(){}
 
 Bibliotheque::Bibliotheque(Deck& deck){
     m_bibliotheque = deck.getDeck();
@@ -10,7 +10,7 @@ Bibliotheque::Bibliotheque(Deck& deck){
 
 Bibliotheque::~Bibliotheque(){}
 
-std::vector<Carte&> Bibliotheque::getBibliotheque(){
+std::vector<Carte*> Bibliotheque::getBibliotheque(){
     return m_bibliotheque;
 }
 
