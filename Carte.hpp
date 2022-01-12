@@ -6,7 +6,7 @@
 #include <vector>
 
 class Carte {
-    private :
+    protected :
         bool m_degagee;
     
     public :

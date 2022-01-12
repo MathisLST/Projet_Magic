@@ -12,8 +12,10 @@ class Terrain : public Carte {
 
     public :
         Terrain (std::string type);
-
+        
+        bool getDegagee();
         std::string getType();
+        void setDegagee(bool estDegagee);
         
 };
 

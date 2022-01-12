@@ -5,17 +5,17 @@
 
 Terrain::Terrain (std::string type){
     m_type = type;
-    Carte::setDegagee(false);
+    setDegagee(false);
 }
 
 std::string Terrain::getType(){
     return m_type;
 }
 
-bool Carte::getDegagee(){
+bool Terrain::getDegagee(){
     return m_degagee;
 }
 
-void Carte::setDegagee(bool estDegagee){
+void Terrain::setDegagee(bool estDegagee){
     m_degagee = estDegagee;
 }

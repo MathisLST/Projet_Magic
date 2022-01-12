@@ -4,7 +4,7 @@ CXXFLAGS=-Wall -Wextra
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $< -c -o $@
 
-main: Capacite.o Creature.o Terrain.o
+main: Capacite.o Creature.o Terrain.o main.o
 	$(CXX) $^ -o $@
 
 .PHONY: run clean

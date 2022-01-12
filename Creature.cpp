@@ -14,7 +14,7 @@ Creature::Creature (std::string nom, std::string type, int const basedEndurance 
     m_coutQuelconque = coutQuelconque;
     m_coutSpecifique = coutSpecifique;
     m_capacites = capacites;
-    Carte::setDegagee(false);
+    setDegagee(false);
     
 }
 
@@ -40,7 +40,7 @@ int Creature::getCoutQuelconque(){
     return m_coutQuelconque;
 }
 
-bool Carte::getDegagee(){
+bool Creature::getDegagee(){
     return m_degagee;
 }
 
@@ -51,6 +51,6 @@ std::vector<Capacite*> Creature::getCapacites(){
     return m_capacites;
 }
 
-void Carte::setDegagee(bool estDegagee){
+void Creature::setDegagee(bool estDegagee){
     m_degagee = estDegagee;
 }

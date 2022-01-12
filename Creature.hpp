@@ -33,8 +33,11 @@ class Creature : public Carte {
         int getEndurance();
         int getForce();
         int getCoutQuelconque();
+        bool getDegagee();
         std::vector <std::string> getCoutSpecifique();
         std::vector <Capacite*> getCapacites();
+
+        void setDegagee(bool estDegagee);
         
 };
 
