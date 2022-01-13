@@ -19,6 +19,10 @@ Creature::Creature (std::string nom, std::string type, int basedEndurance ,int b
     
 }
 
+Creature::~Creature(){
+    
+}
+
 std::string Creature::getNom(){
     return m_nom;
 }

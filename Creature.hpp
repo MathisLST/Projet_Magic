@@ -25,7 +25,7 @@ class Creature : public Carte {
     public :
         Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance, 
         int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite> capacites);
-
+        virtual ~Creature();
         std::string getNom();
         std::string getType();
         int getBasedEndurance();

@@ -11,7 +11,12 @@ Deck::Deck( std::vector<Carte*> deck){
 }
 
 
-Deck::~Deck(){}
+Deck::~Deck(){
+    for(Carte* carte : m_deck){
+        delete carte;
+    }
+    m_deck.clear();
+}
 
 std::vector<Carte*> Deck::getDeck(){
     return m_deck;

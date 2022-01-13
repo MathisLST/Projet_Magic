@@ -1,4 +1,4 @@
-CXX=g++
+CXX=g++ -std=c++20
 CXXFLAGS=-Wall -Wextra
 
 %.o: %.cpp

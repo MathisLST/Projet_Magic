@@ -8,7 +8,12 @@ Bibliotheque::Bibliotheque(Deck deck){
     m_bibliotheque = deck.getDeck();
 }
 
-Bibliotheque::~Bibliotheque(){}
+Bibliotheque::~Bibliotheque(){
+    for(Carte* carte : m_bibliotheque){
+        delete carte;
+    }
+    m_bibliotheque.clear();
+}
 
 std::vector<Carte*> Bibliotheque::getBibliotheque(){
     return m_bibliotheque;

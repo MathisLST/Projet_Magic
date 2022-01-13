@@ -38,8 +38,8 @@
         void Joueur::distribuer(){
 
             for (int i = 0; i < 7; i++ ){
-                m_main.push_back(m_bibliotheque.getBibliotheque().at(i));
-
+                m_main.push_back(m_bibliotheque.getBibliotheque().front());
+                m_bibliotheque.getBibliotheque().erase(m_bibliotheque.getBibliotheque().begin());
             }
             
             

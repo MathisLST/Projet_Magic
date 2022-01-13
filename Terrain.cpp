@@ -9,6 +9,8 @@ Terrain::Terrain (std::string type){
     m_creature = false;
 }
 
+Terrain::~Terrain(){};
+
 std::string Terrain::getType(){
     return m_type;
 }
