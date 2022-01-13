@@ -12,9 +12,10 @@ class Bibliotheque {
 
     public :
         Bibliotheque();
-        Bibliotheque(Deck deck);
+        Bibliotheque(Deck* deck);
         ~Bibliotheque();
         std::vector<Carte*> getBibliotheque();
+        void pop_front();
 
 };
 

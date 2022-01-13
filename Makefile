@@ -1,4 +1,4 @@
-CXX=g++ -std=c++20
+CXX=g++ -std=c++17
 CXXFLAGS=-Wall -Wextra
 
 %.o: %.cpp
@@ -13,4 +13,4 @@ run: main
 	./$<
 
 clean:
-	rm -f *.o *~ *.core
+	rm -f *.o *~ *.cores

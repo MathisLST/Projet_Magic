@@ -11,8 +11,8 @@ inline bool instanceof(const T*) {
 }
 */
 
-void Affiche::afficheMain(Joueur joueur){
-     for(Carte* carte : joueur.getMain()){
+void Affiche::afficheMain(Joueur* joueur){
+     for(Carte* carte : joueur->getMain()){
          if(carte->getCreature()){
             Creature* creature = dynamic_cast<Creature*>(carte) ;
             std::cout << " | " << creature->getNom() << "(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << ",";
@@ -35,8 +35,8 @@ void Affiche::afficheCoutSpe(std::vector<std::string> coutSpecifique){
 //void afficheJeu(EnJeu jeu){}
 
  
-void Affiche::afficheBibliotheque(Joueur joueur){
-     std::cout << "Bibliotheque : " << joueur.getBibliotheque().getBibliotheque().size();
+void Affiche::afficheBibliotheque(Joueur* joueur){
+     std::cout << "Bibliotheque : " << joueur->getBibliotheque()->getBibliotheque().size();
  }
 
  void Affiche::afficheCarte(std::vector<Creature*> lCreature, std::vector<Terrain*> lTerrain){

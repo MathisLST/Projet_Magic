@@ -4,9 +4,10 @@
 
 Bibliotheque::Bibliotheque(){}
 
-Bibliotheque::Bibliotheque(Deck deck){
-    m_bibliotheque = deck.getDeck();
+Bibliotheque::Bibliotheque(Deck* deck){
+    m_bibliotheque = deck->getDeck();
 }
+
 
 Bibliotheque::~Bibliotheque(){
     for(Carte* carte : m_bibliotheque){
@@ -17,6 +18,10 @@ Bibliotheque::~Bibliotheque(){
 
 std::vector<Carte*> Bibliotheque::getBibliotheque(){
     return m_bibliotheque;
+}
+
+void Bibliotheque::pop_front(){
+    m_bibliotheque.erase(m_bibliotheque.begin());
 }
 
 

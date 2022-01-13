@@ -2,24 +2,29 @@
 #include <cstdlib>
 #include <vector>
 #include "Joueur.hpp"
+#include "Capacite.hpp"
+#include "Creature.hpp"
 
 
         Joueur::Joueur(){}
 
-        Joueur::Joueur (int pv, Deck deck){
+        Joueur::Joueur (int pv, Deck* deck){
+            
             m_pv = pv;
             m_deck = deck;
-            m_bibliotheque = Bibliotheque(m_deck);
+            m_bibliotheque = new Bibliotheque(m_deck);
             std::vector<Carte*> main;
             m_main = main;
-            
+
         }
+
+        Joueur::~Joueur(){}
 
         int Joueur::getPV(){
             return m_pv;
         }
 
-        Deck Joueur::getDeck(){
+        Deck* Joueur::getDeck(){
             return m_deck;
         }
 
@@ -30,7 +35,7 @@
             return m_main;
         }
 
-        Bibliotheque Joueur::getBibliotheque(){
+        Bibliotheque* Joueur::getBibliotheque(){
             return m_bibliotheque;
         }
 
@@ -38,10 +43,8 @@
         void Joueur::distribuer(){
 
             for (int i = 0; i < 7; i++ ){
-                m_main.push_back(m_bibliotheque.getBibliotheque().front());
-                m_bibliotheque.getBibliotheque().erase(m_bibliotheque.getBibliotheque().begin());
+                m_main.push_back(m_bibliotheque->getBibliotheque().at(0));
+                m_bibliotheque->pop_front();
             }
-            
-            
         }
         
