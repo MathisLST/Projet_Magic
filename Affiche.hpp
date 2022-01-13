@@ -6,7 +6,7 @@
 class Affiche
 {
 public:
- static void afficheJeu(EnJeu jeu);
+ static void afficheJeu(EnJeu* jeu);
 
  static void afficheMain(Joueur* joueur);
  static void afficheCoutSpe(std::vector<std::string>);

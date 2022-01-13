@@ -29,13 +29,14 @@ int main(){
     Deck* deck = new Deck(deckVec);
     
     Joueur* j1 = new Joueur(20, deck);
-    
-    
-    j1->distribuer();
+    Joueur* j2 = new Joueur(20, deck);
 
-    Affiche::afficheBibliotheque(j1);
-    std::cout << "\t";
-    Affiche::afficheMain(j1);
+    EnJeu* enJeu = new EnJeu(j1, j2);
+
+    j1->distribuer();
+    j2->distribuer();
+
+    Affiche::afficheJeu(enJeu);
     std::cout << std::endl;
     
 

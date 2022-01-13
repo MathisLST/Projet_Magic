@@ -15,7 +15,7 @@ void Affiche::afficheMain(Joueur* joueur){
      for(Carte* carte : joueur->getMain()){
          if(carte->getCreature()){
             Creature* creature = dynamic_cast<Creature*>(carte) ;
-            std::cout << " | " << creature->getNom() << "(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << ",";
+            std::cout << " | " << "\e[41m" << creature->getNom() << "\e[0m" <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << ",";
             Affiche::afficheCoutSpe(creature->getCoutSpecifique());
             std::cout << ")";
          }else{
@@ -32,7 +32,17 @@ void Affiche::afficheCoutSpe(std::vector<std::string> coutSpecifique){
     }
 }
 
-//void afficheJeu(EnJeu jeu){}
+void Affiche::afficheJeu(EnJeu* jeu){
+    afficheBibliotheque(jeu->getJoueur1());
+    std::cout << "\t";
+    afficheMain(jeu->getJoueur1());
+    std::cout << "\n\n\n" << std::endl;
+    afficheBibliotheque(jeu->getJoueur2());
+    std::cout << "\t";
+    afficheMain(jeu->getJoueur2());
+
+
+}
 
  
 void Affiche::afficheBibliotheque(Joueur* joueur){
