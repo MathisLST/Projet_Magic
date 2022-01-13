@@ -16,6 +16,7 @@ class Bibliotheque {
         ~Bibliotheque();
         std::vector<Carte*> getBibliotheque();
         void pop_front();
+        void melanger();
 
 };
 

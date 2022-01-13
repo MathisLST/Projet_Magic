@@ -27,6 +27,7 @@ class Joueur {
         std::vector<Carte*> getMain();
         Bibliotheque* getBibliotheque();
         void distribuer();
+        void melanger();
     
 
 };

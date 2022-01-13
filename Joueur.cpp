@@ -47,4 +47,8 @@
                 m_bibliotheque->pop_front();
             }
         }
+
+        void Joueur::melanger(){
+            m_bibliotheque->melanger();
+        }
         

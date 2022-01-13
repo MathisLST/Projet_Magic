@@ -33,6 +33,9 @@ int main(){
 
     EnJeu* enJeu = new EnJeu(j1, j2);
 
+    j1->melanger();
+    j2->melanger();
+
     j1->distribuer();
     j2->distribuer();
 

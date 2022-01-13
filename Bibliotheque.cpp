@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
+#include <random>
 #include "Bibliotheque.hpp"
 
 Bibliotheque::Bibliotheque(){}
@@ -24,4 +26,9 @@ void Bibliotheque::pop_front(){
     m_bibliotheque.erase(m_bibliotheque.begin());
 }
 
+void Bibliotheque::melanger(){
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(m_bibliotheque.begin(), m_bibliotheque.end(), g);
+}
 
