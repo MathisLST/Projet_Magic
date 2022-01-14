@@ -16,6 +16,8 @@ class Joueur {
         Bibliotheque* m_bibliotheque;
         std::vector<Carte*> m_cimetiere;
         std::vector<Carte*> m_main;
+        std::vector<Creature*> m_LCreature;
+        std::vector<Terrain*> m_LTerrain;
 
     public :
         Joueur();
@@ -26,7 +28,9 @@ class Joueur {
         std::vector<Carte*> getCimetiere();
         std::vector<Carte*> getMain();
         Bibliotheque* getBibliotheque();
-        void distribuer();
+        std::vector<Creature*> getLCreature();
+        std::vector<Terrain*> getLTerrain();
+        void piocher(int nbrCartes);
         void melanger();
     
 

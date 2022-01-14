@@ -13,10 +13,9 @@ class EnJeu{
     private :
         Joueur* m_joueur1;
         Joueur* m_joueur2;
-        std::vector<Terrain*> m_LTerrainJ1;
-        std::vector<Terrain*> m_LTerrainJ2;
-        std::vector<Creature*> m_LCreatureJ1;
-        std::vector<Creature*> m_LCreatureJ2;
+        bool partieFinie;
+        bool t1;
+        Joueur* gagnant;
 
     public :
         EnJeu(Joueur* joueur1, Joueur* joueur2);
@@ -33,6 +32,18 @@ class EnJeu{
         void setLTerrainJ2();
         void setLCreatureJ1();
         void setLCreatureJ2();
+
+        Joueur* tirerAuSort(Joueur* joueur1, Joueur* joueur2 );   
+        void phasePioche(Joueur* j1, int nbrCartes);
+        void phaseDesengagement(Joueur* j1);
+        void phasePose(Joueur* j1);
+        void phaseCombat(Joueur* j1, Joueur* j2);
+        void phasePose(Joueur* j1);
+        void phaseFinTour(Joueur* j1, Joueur* j2);
+
+        void tour(Joueur* j1, Joueur* j2);
+
+        void start(Joueur* joueur1, Joueur* joueur2);
         
 
 };

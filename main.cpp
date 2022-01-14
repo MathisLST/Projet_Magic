@@ -36,8 +36,8 @@ int main(){
     j1->melanger();
     j2->melanger();
 
-    j1->distribuer();
-    j2->distribuer();
+    j1->piocher(7);
+    j2->piocher(7);
 
     Affiche::afficheJeu(enJeu);
     std::cout << std::endl;

@@ -38,11 +38,18 @@
         Bibliotheque* Joueur::getBibliotheque(){
             return m_bibliotheque;
         }
+        std::vector<Terrain*> Joueur::getLTerrain(){
+            return m_LTerrain;
+        }
 
+        std::vector<Creature*> Joueur::getLCreature(){
+            return m_LCreature;
+        }
         
-        void Joueur::distribuer(){
+        void Joueur::piocher(int nbrCartes){
 
-            for (int i = 0; i < 7; i++ ){
+            for (int i = 0; i < nbrCartes; i++ ){
+                
                 m_main.push_back(m_bibliotheque->getBibliotheque().at(0));
                 m_bibliotheque->pop_front();
             }

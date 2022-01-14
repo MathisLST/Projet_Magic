@@ -18,9 +18,9 @@ void Affiche::afficheJeu(EnJeu* jeu){
     afficheBibliotheque(jeu->getJoueur1());
     std::cout << "\t";
     afficheMain(jeu->getJoueur1());
-    std::cout << "\n__________________________________________________________________________________" << std::endl;
+    std::cout << "\n_______________________________________________________________________________________________________________" << std::endl;
     afficheCombat(jeu);
-    std::cout << "__________________________________________________________________________________\n" << std::endl;
+    std::cout << "_______________________________________________________________________________________________________________\n" << std::endl;
     afficheBibliotheque(jeu->getJoueur2());
     std::cout << "\t";
     afficheMain(jeu->getJoueur2());
