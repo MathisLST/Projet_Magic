@@ -20,6 +20,7 @@ Joueur* EnJeu::getJoueur2(){
 }
 
 Joueur* EnJeu::tirerAuSort(Joueur* joueur1, Joueur* joueur2 ){}
+void EnJeu::phasePioche(Joueur* j1){}
 void EnJeu::phaseDesengagement(Joueur* j1){}
 void EnJeu::phasePose(Joueur* j1){}
 void EnJeu::phaseCombat(Joueur* j1, Joueur* j2){}
@@ -28,7 +29,7 @@ void EnJeu::phaseFinTour(Joueur* j1, Joueur* j2){}
 
 void EnJeu::tour(Joueur* j1, Joueur* j2){
     if(!t1){
-            phasePioche(j1, 1);
+            phasePioche(j1);
         }
     phaseDesengagement(j1);
     phasePose(j1);

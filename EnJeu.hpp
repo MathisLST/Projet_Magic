@@ -34,7 +34,7 @@ class EnJeu{
         void setLCreatureJ2();
 
         Joueur* tirerAuSort(Joueur* joueur1, Joueur* joueur2 );   
-        void phasePioche(Joueur* j1, int nbrCartes);
+        void phasePioche(Joueur* j1);
         void phaseDesengagement(Joueur* j1);
         void phasePose(Joueur* j1);
         void phaseCombat(Joueur* j1, Joueur* j2);
