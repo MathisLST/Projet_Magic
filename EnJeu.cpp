@@ -42,13 +42,21 @@ bool EnJeu::phasePioche(Joueur* j1, Joueur* j2){
 
 void EnJeu::phaseDesengagement(Joueur* j1){
     j1->desengager();
+    j1->majCptTerrainPrets();
 }
 
 void EnJeu::phasePose(Joueur* j1){
     int nbCartesMain = j1->getMain().size();
     int carteAPoser;
     bool veutContinuer = true;
+    std::string rep;
     do{
+            std::cout << j1->getNom() << " voulez-vous poser une carte a poser." << std::endl;
+            std::cin >> rep;
+            if(rep == "o") veutContinuer = true;
+            else if(rep == "n") veutContinuer = false;
+        } while (!(rep == "o") && !(rep == "n"));
+    while(veutContinuer){
         std::cout << j1->getNom() << " choisissez une carte a poser." << std::endl;
         std::cin >> carteAPoser;
         carteAPoser--;
@@ -58,13 +66,13 @@ void EnJeu::phasePose(Joueur* j1){
         if(carteAPoser < nbCartesMain && carteAPoser > -1){
             // Si la carte désignée est une créature
             if(j1->getMain().at(carteAPoser)->getCreature()){
-                j1->ajoutCreature(carteAPoser);
+                j1->ajoutCreature(carteAPoser, this);
             }
             // Si la carte désignée est un terrain
             else{
                 // Si un terrain n'a pas été posé ce tour
                 if(!j1->getTerrainPose()){
-                    j1->ajoutTerrain(carteAPoser);
+                    j1->ajoutTerrain(carteAPoser, this);
                 }
                 // Si un terrain a déjà été posé ce tour
                 else{
@@ -76,23 +84,24 @@ void EnJeu::phasePose(Joueur* j1){
             std::cout << "Le numero rentre n'est pas valide !" << std::endl;
         }
         // On demande si le joueur veut poser une autre carte
-        std::cout << "Voulez-vous poser une autre carte ? o/n" << std::endl;
-        std::string rep;
+    
         do{
+            std::cout << "Voulez-vous poser une autre carte ? o/n" << std::endl;
             std::cin >> rep;
             if(rep == "o") veutContinuer = true;
             else if(rep == "n") veutContinuer = false;
         } while (!(rep == "o") && !(rep == "n"));
 
-    } while(veutContinuer);
+    } 
 }
 
 bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
     if(j1->attaque()){
         j2->defense(j1);
+        j1->choisirAttaque();
     }
-    j1->choisirAttaque();
     for(Creature* creature : j1->getLCreature()){
+        std::cout <<"tu est la" << std::endl;
         if(creature->getAttaque()){
             if(creature->getEstDefenduPar().size() == 0){
                 if(j2->setPv(creature->getForce())){
@@ -107,7 +116,7 @@ bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
                     creature->setEndurance(creature->getEndurance() - creatureD->getForce());
                     if(creature->getEndurance() <= 0 && creatureD->getEndurance() <= 0){
                         j1->mortAuCombat(creature);
-                        j1->mortAuCombat(creatureD);
+                        j2->mortAuCombat(creatureD);
                         break;
                     }else if(creature->getEndurance() <= 0 ){
                         j1->mortAuCombat(creature);
@@ -127,6 +136,8 @@ void EnJeu::phaseFinTour(Joueur* j1, Joueur* j2){
     j2->tropDeCartes();
     j1->remonterStatsCreatures();
     j2->remonterStatsCreatures();
+    j1->setTerrainPose(false);
+    j2->setTerrainPose(false);
 
 }
 
@@ -137,21 +148,18 @@ bool EnJeu::tour(Joueur* j1, Joueur* j2){
             return false;
         }
     }
-    
-    Affiche::afficheJeu(this);
-        
-   
     phaseDesengagement(j1);
+    Affiche::afficheJeu(this);
     
     phasePose(j1);
     
     if(j1->getLCreature().size()>0){
-        
-    }
-    if(!phaseCombat(j1,j2)){
+        if(!phaseCombat(j1,j2)){
             return false;
         }
+    }
     
+    Affiche::afficheJeu(this);
     phasePose(j1);
     
     phaseFinTour(j1, j2);

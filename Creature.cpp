@@ -12,7 +12,7 @@ Creature::Creature(std::string nom, std::string type, int const basedEndurance ,
     m_force = basedForce;
     m_coutQuelconque = coutQuelconque;
     m_capacites = capacites;
-    setDegagee(false);
+    setDegagee(true);
     m_creature = true;
     m_attaque = false;
 

@@ -11,7 +11,7 @@
 #include "Terrain.hpp"
 #include "EnJeu.hpp"
 
-
+class EnJeu;
 class Joueur {
     private :
         std::string m_nom;
@@ -49,10 +49,10 @@ class Joueur {
         void defense(Joueur* joueur);
         void choisirAttaque();
         void mortAuCombat(Creature* creature);
-        void ajoutTerrain(int indexCarte);
+        void ajoutTerrain(int indexCarte, EnJeu* enJeu);
         bool getTerrainPose();
         void setTerrainPose(bool b);
-        void ajoutCreature(int indexCarte);
+        void ajoutCreature(int indexCarte, EnJeu* enJeu);
         bool creaturePosable(Creature* creature);
         std::vector<int> getCptTerrainPrets();
         void majCptTerrainPrets();

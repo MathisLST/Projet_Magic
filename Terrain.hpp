@@ -16,11 +16,11 @@ class Terrain : public Carte {
             FORET
         };
         
-        Terrain (std::string type); //a enlever
+        
         Terrain(land landType);
         virtual ~Terrain();
         bool getDegagee();
-        std::string getType(); // a enlever
+       
         void setDegagee(bool estDegagee);
         bool getCreature();
 
@@ -29,7 +29,7 @@ class Terrain : public Carte {
         static const char* landToString(int l, bool abregee = false) throw();
 
     private :
-        std::string m_type; // a enlever
+        
 
         land m_land;
 

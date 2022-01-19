@@ -6,6 +6,8 @@
 #include <vector>
 #include "EnJeu.hpp"
 
+class EnJeu;
+class Joueur;
 class Affiche
 {
 public:

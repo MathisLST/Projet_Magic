@@ -3,23 +3,15 @@
 #include <vector>
 #include "Terrain.hpp"
 
-Terrain::Terrain (std::string type){ // a enlever
-    m_type = type;
-    setDegagee(false);
-    m_creature = false;
-}
 
 Terrain::Terrain(land landType){
     m_land = landType;
-    setDegagee(false);
+    setDegagee(true);
     m_creature = false;
 }
 
 Terrain::~Terrain(){};
 
-std::string Terrain::getType(){
-    return m_type;
-}
 
 bool Terrain::getDegagee(){
     return m_degagee;

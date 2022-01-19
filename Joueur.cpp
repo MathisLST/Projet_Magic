@@ -2,9 +2,7 @@
 #include <cstdlib>
 #include <vector>
 #include "Joueur.hpp"
-#include "Capacite.hpp"
-#include "Creature.hpp"
-#include "Affiche.hpp"
+
 
 
         Joueur::Joueur(){}
@@ -55,7 +53,8 @@
         }
 
         bool Joueur::setPv(int pv){
-            if( m_pv - pv > 0){
+            m_pv -= pv;
+            if( m_pv  > 0){
                 return true;
             }else{
                 return false;
@@ -124,13 +123,14 @@
         }
 
         bool Joueur::attaque(){
-            std::string attaque;
-            std::cout << m_nom << " voulez-vous attaquer ? ('t' pour tout, 'r' pour rien, ou 'c' pour choisir) ";
-            std::cin >> attaque;
-            std::cout << std::endl;
+            
 
             bool choix = true;
             while(choix){
+                std::string attaque;
+                std::cout << m_nom << " voulez-vous attaquer ? ('t' pour tout, 'n' pour non, ou 'c' pour choisir) ";
+                std::cin >> attaque;
+                std::cout << std::endl;
                 if(attaque == "t"){
                     for(Creature* creature : m_LCreature){
                         if(creature->getDegagee()){
@@ -141,7 +141,7 @@
                     choix = false;
                     return true;
 
-                }else if(attaque == "r"){
+                }else if(attaque == "n"){
                     choix = false;
                     return false;
 
@@ -151,10 +151,10 @@
                         std::cout << m_nom << " veuillez choisir avec qui vous voulez attaquer. ";
                         std::cin >> carte;
                         std::cout << std::endl;
-                        if(carte > 0 && carte < (int)m_LCreature.size()){
-                            if(m_LCreature.at(carte)->getDegagee()){
-                                m_LCreature.at(carte)->setDegagee(false);
-                                m_LCreature.at(carte)->setAttaque(true);
+                        if(carte > 0 && carte <= (int)m_LCreature.size()){
+                            if(m_LCreature.at(carte-1)->getDegagee()){
+                                m_LCreature.at(carte-1)->setDegagee(false);
+                                m_LCreature.at(carte-1)->setAttaque(true);
                             }
                         }else{
                             std::cout << "Erreur la carte n'est pas valable ! " << std::endl;
@@ -162,7 +162,7 @@
                         std::string continuer;
                         do{
                             std::cout << "Voulez-vous continuer ? ";
-                            std::cin >> choix;
+                            std::cin >> continuer;
                             if(continuer == "o") choix = true;
                             else if(continuer == "n") return true;
                             else { std::cout << "Mauvaise entree !" << std::endl;}
@@ -190,7 +190,7 @@
                     std::cout << "Sur qui voulez-vous defendre ? ";
                     std::cin >> surQui;
 
-                    if(surQui > 0 && surQui < (int)joueur2->getLCreature().size()){
+                    if(surQui > 0 && surQui <= (int)joueur2->getLCreature().size()){
                         if (joueur2->getLCreature().at(surQui-1)->getAttaque()){
                                 int avecQui;
                                 std::cout << "Avec qui voulez-vous defendre ? ";
@@ -252,16 +252,18 @@
                 }
             }
         }
-    void Joueur::ajoutTerrain(int indexCarte){
+    void Joueur::ajoutTerrain(int indexCarte, EnJeu* enJeu){
         Terrain* terrain = dynamic_cast<Terrain*>(m_main.at(indexCarte));
         m_LTerrain.push_back(terrain);
-        std::cout << "Un terrain " <<  Terrain::landToString(terrain->getLandIndex()) << " a ete pose." << std::endl;
+        
         int indexCptTerrain = terrain->getLandIndex();
         m_cptTerrainPrets.at(indexCptTerrain) += 1;
         m_totalTerrainsPrets += 1;
         m_main.erase(m_main.begin() + indexCarte);
         setTerrainPose(true);
         majCptTerrainPrets();
+        Affiche::afficheJeu(enJeu);
+        std::cout << "Un terrain " <<  Terrain::landToString(terrain->getLandIndex()) << " a ete pose." << std::endl;
     }
         
     bool Joueur::getTerrainPose(){
@@ -283,7 +285,7 @@
 
             }
         }
-        void Joueur::ajoutCreature(int indexCarte){
+        void Joueur::ajoutCreature(int indexCarte, EnJeu* enJeu){
             Creature* creature = dynamic_cast<Creature*>(m_main.at(indexCarte));
             if (creaturePosable(creature)){
                 int coutQuelcCopy = creature->getCoutQuelconque();
@@ -323,12 +325,11 @@
                     }
                 }
                 majCptTerrainPrets();
-                Affiche::afficheJeu(enJeu);
-
                 m_LCreature.push_back(creature);
                 std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;
                 creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
                 m_main.erase(m_main.begin() + indexCarte);
+                Affiche::afficheJeu(enJeu);
             }
             else{
                 std::cout << "Cette creature ne peut pas etre posee !" << std::endl;

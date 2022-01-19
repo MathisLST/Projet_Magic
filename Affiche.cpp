@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include "Joueur.hpp"
 #include "Affiche.hpp"
 
 
@@ -15,13 +16,14 @@ inline bool instanceof(const T*) {
 */
 void Affiche::afficheJeu(EnJeu* jeu){
     system("clear");
-
+    std::cout << jeu->getJoueur1()->getNom() << " : PV :" << jeu->getJoueur1()->getPV() << " ";
     afficheBibliotheque(jeu->getJoueur1());
     std::cout << "\t";
     afficheMain(jeu->getJoueur1());
     std::cout << "\n_______________________________________________________________________________________________________________" << std::endl;
     afficheCombat(jeu);
     std::cout << "_______________________________________________________________________________________________________________\n" << std::endl;
+    std::cout << jeu->getJoueur2()->getNom() << " : PV :" << jeu->getJoueur2()->getPV() << " ";
     afficheBibliotheque(jeu->getJoueur2());
     std::cout << "\t";
     afficheMain(jeu->getJoueur2());
@@ -38,7 +40,7 @@ void Affiche::afficheMain(Joueur* joueur){
             
          }else{
              Terrain* terrain = dynamic_cast<Terrain*>(carte) ;
-             std::cout << " | " << getColorDegagee(terrain) << terrain->landToString(terrain->getLandIndex());
+             std::cout << " | " << getColorDegagee(terrain) << terrain->landToString(terrain->getLandIndex()) << "\e[0m";
          }
      } 
  }
@@ -58,14 +60,6 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
      std::cout << "Bibliotheque : " << joueur->getBibliotheque()->getBibliotheque().size();
  }
 
- void Affiche::afficheCarte(std::vector<Creature*> lCreature, std::vector<Terrain*> lTerrain){
-     for(Creature* creature : lCreature){
-         std::cout << " | " << creature->getNom() << "(" << creature->getForce() << "," << creature->getEndurance() << ")";
-     }
-     for(Terrain* terrain : lTerrain){
-         std::cout << " | " << terrain->getType();
-     }
- }
  void afficheCimetiere();
 
  void Affiche::afficheCombat(EnJeu* enJeu){
@@ -73,16 +67,16 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
             std::cout << " | " << getColorDegagee(creaturesJ1) << creaturesJ1->getNom() << "\e[0m" <<"(" << creaturesJ1->getForce() << "," << creaturesJ1->getEndurance() << ")" << "(" << creaturesJ1->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creaturesJ1->getCptCoutSpec()) << ")";
      }
       for(Terrain* terrainsJ1 : enJeu->getJoueur1()->getLTerrain()){
-            std::cout << " | " << getColorDegagee(terrainsJ1) << terrainsJ1->landToString(terrainsJ1->getLandIndex());
+            std::cout << " | " << getColorDegagee(terrainsJ1) << terrainsJ1->landToString(terrainsJ1->getLandIndex()) << "\e[0m";
       }
 
       std::cout << std::endl;
 
-      for(Creature* creaturesJ2 : enJeu->getJoueur1()->getLCreature()){
+      for(Creature* creaturesJ2 : enJeu->getJoueur2()->getLCreature()){
             std::cout << " | " << getColorDegagee(creaturesJ2) << creaturesJ2->getNom() << "\e[0m" <<"(" << creaturesJ2->getForce() << "," << creaturesJ2->getEndurance() << ")" << "(" << creaturesJ2->getCoutQuelconque()  << ","<< Affiche::afficheCoutSpe(creaturesJ2->getCptCoutSpec()) << ")";
      }
-      for(Terrain* terrainsJ2 : enJeu->getJoueur1()->getLTerrain()){
-            std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->landToString(terrainsJ2->getLandIndex());
+      for(Terrain* terrainsJ2 : enJeu->getJoueur2()->getLTerrain()){
+            std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->landToString(terrainsJ2->getLandIndex())<< "\e[0m";
       }
       std::cout << std::endl;
  }
@@ -99,7 +93,7 @@ std::string Affiche::getColorType(Creature* creature){
 }
 
 std::string Affiche::getColorDegagee(Carte* carte){
-    if(carte->getDegagee()){
+    if(!carte->getDegagee()){
         return "\e[47;30m";
     }else{
         return "";
