@@ -6,6 +6,7 @@
 
 
 
+
 /*
 template<typename Base, typename T>
 inline bool instanceof(const T*) {
@@ -33,20 +34,24 @@ void Affiche::afficheMain(Joueur* joueur){
      for(Carte* carte : joueur->getMain()){
          if(carte->getCreature()){
             Creature* creature = dynamic_cast<Creature*>(carte) ;
-            std::cout << " | " << getColorDegagee(creature) << creature->getNom() << "\e[0m" <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << ",";
-            Affiche::afficheCoutSpe(creature->getCoutSpecifique());
-            std::cout << ")";
+            std::cout << " | " << getColorDegagee(creature) << creature->getNom() << "\e[0m" <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creature->getCptCoutSpec()) << ")";
+            
          }else{
              Terrain* terrain = dynamic_cast<Terrain*>(carte) ;
-             std::cout << " | " << getColorDegagee(terrain) << terrain->getType();
+             std::cout << " | " << getColorDegagee(terrain) << terrain->landToString(terrain->getLandIndex());
          }
      } 
  }
 
-void Affiche::afficheCoutSpe(std::vector<std::string> coutSpecifique){
-    for(std::string cout : coutSpecifique){
-        std::cout << " " << cout;
+std::string Affiche::afficheCoutSpe(std::vector<int> coutSpecifique){
+    int i = 0;
+    std::string coutSpe="";
+    for(int cpt : coutSpecifique){
+        for(int j = 0; j < cpt; j++ ){
+            coutSpe = coutSpe + Terrain::landToString(i,true) + " ";
+        }
     }
+    return coutSpe;
 }
 
 void Affiche::afficheBibliotheque(Joueur* joueur){
@@ -65,23 +70,19 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
 
  void Affiche::afficheCombat(EnJeu* enJeu){
      for(Creature* creaturesJ1 : enJeu->getJoueur1()->getLCreature()){
-            std::cout << " | " << getColorDegagee(creaturesJ1) << creaturesJ1->getNom() << "\e[0m" <<"(" << creaturesJ1->getForce() << "," << creaturesJ1->getEndurance() << ")" << "(" << creaturesJ1->getCoutQuelconque()  << ",";
-            Affiche::afficheCoutSpe(creaturesJ1->getCoutSpecifique());
-            std::cout << ")";
+            std::cout << " | " << getColorDegagee(creaturesJ1) << creaturesJ1->getNom() << "\e[0m" <<"(" << creaturesJ1->getForce() << "," << creaturesJ1->getEndurance() << ")" << "(" << creaturesJ1->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creaturesJ1->getCptCoutSpec()) << ")";
      }
       for(Terrain* terrainsJ1 : enJeu->getJoueur1()->getLTerrain()){
-            std::cout << " | " << getColorDegagee(terrainsJ1) << terrainsJ1->getType();
+            std::cout << " | " << getColorDegagee(terrainsJ1) << terrainsJ1->landToString(terrainsJ1->getLandIndex());
       }
 
       std::cout << std::endl;
 
       for(Creature* creaturesJ2 : enJeu->getJoueur1()->getLCreature()){
-            std::cout << " | " << getColorDegagee(creaturesJ2) << creaturesJ2->getNom() << "\e[0m" <<"(" << creaturesJ2->getForce() << "," << creaturesJ2->getEndurance() << ")" << "(" << creaturesJ2->getCoutQuelconque()  << ",";
-            Affiche::afficheCoutSpe(creaturesJ2->getCoutSpecifique());
-            std::cout << ")";
+            std::cout << " | " << getColorDegagee(creaturesJ2) << creaturesJ2->getNom() << "\e[0m" <<"(" << creaturesJ2->getForce() << "," << creaturesJ2->getEndurance() << ")" << "(" << creaturesJ2->getCoutQuelconque()  << ","<< Affiche::afficheCoutSpe(creaturesJ2->getCptCoutSpec()) << ")";
      }
       for(Terrain* terrainsJ2 : enJeu->getJoueur1()->getLTerrain()){
-            std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->getType();
+            std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->landToString(terrainsJ2->getLandIndex());
       }
       std::cout << std::endl;
  }

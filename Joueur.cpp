@@ -4,6 +4,7 @@
 #include "Joueur.hpp"
 #include "Capacite.hpp"
 #include "Creature.hpp"
+#include "Affiche.hpp"
 
 
         Joueur::Joueur(){}
@@ -300,7 +301,7 @@
                 }
                 while(coutQuelcCopy > 0){
                     majCptTerrainPrets();
-                    // refresh affichage
+                    Affiche::afficheJeu(enJeu);
                     int terrainType = -1;
                     std::cout << "Choisissez un terrain a engager (" << coutQuelcCopy << " restant(s) )" << std::endl;
                     while(terrainType > -1 && terrainType < 5){
@@ -322,7 +323,7 @@
                     }
                 }
                 majCptTerrainPrets();
-                //refresh affichage
+                Affiche::afficheJeu(enJeu);
 
                 m_LCreature.push_back(creature);
                 std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;

@@ -7,6 +7,7 @@
 #include "Terrain.hpp"
 #include "Creature.hpp"
 #include "Joueur.hpp"
+#include "Affiche.hpp"
 
 
 class EnJeu{

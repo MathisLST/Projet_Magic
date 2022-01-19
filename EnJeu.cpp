@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include "EnJeu.hpp"
-#include "Affiche.hpp"
 
 EnJeu::EnJeu(Joueur* joueur1, Joueur* joueur2){
     m_joueur1 = joueur1;
@@ -50,7 +49,7 @@ void EnJeu::phasePose(Joueur* j1){
     int carteAPoser;
     bool veutContinuer = true;
     do{
-        std::cout << "Choisissez une carte a poser." << std::endl;
+        std::cout << j1->getNom() << " choisissez une carte a poser." << std::endl;
         std::cin >> carteAPoser;
         carteAPoser--;
         nbCartesMain = j1->getMain().size();

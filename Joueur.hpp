@@ -9,6 +9,7 @@
 #include "Bibliotheque.hpp"
 #include "Creature.hpp"
 #include "Terrain.hpp"
+#include "EnJeu.hpp"
 
 
 class Joueur {
