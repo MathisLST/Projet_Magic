@@ -16,6 +16,7 @@ Creature::Creature (std::string nom, std::string type, int basedEndurance ,int b
     m_capacites = capacites;
     setDegagee(false);
     m_creature = true;
+    m_attaque = false;
     
 }
 
@@ -59,7 +60,35 @@ std::vector<Capacite> Creature::getCapacites(){
 void Creature::setDegagee(bool estDegagee){
     m_degagee = estDegagee;
 }
+void Creature::setForce(int force){
+    m_force = force;
+}
+void Creature::setEndurance(int endurance){
+    m_endurance = endurance;
+}
 
 bool Creature::getCreature(){
     return m_creature;
 }
+
+bool Creature::getAttaque(){
+    return m_attaque;
+}
+
+std::vector <Creature*> Creature::getEstDefenduPar(){
+    return m_estDefenduPar;
+}
+
+void Creature::setAttaque(bool attaque){
+    m_attaque = attaque;
+}
+
+ void Creature::addDefenseur(Creature* creature){
+     m_estDefenduPar.push_back(creature);
+ }
+
+ void Creature::swap(int pos1, int pos2){
+     Creature* temp = m_estDefenduPar.at(pos2);
+     m_estDefenduPar.at(pos2) = m_estDefenduPar.at(pos1);
+     m_estDefenduPar.at(pos1) = temp;
+ }

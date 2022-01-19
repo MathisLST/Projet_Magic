@@ -24,6 +24,7 @@ void Affiche::afficheJeu(EnJeu* jeu){
     afficheBibliotheque(jeu->getJoueur2());
     std::cout << "\t";
     afficheMain(jeu->getJoueur2());
+    std::cout << std::endl;
 
 
 }
@@ -48,9 +49,6 @@ void Affiche::afficheCoutSpe(std::vector<std::string> coutSpecifique){
     }
 }
 
-
-
- 
 void Affiche::afficheBibliotheque(Joueur* joueur){
      std::cout << "Bibliotheque : " << joueur->getBibliotheque()->getBibliotheque().size();
  }
@@ -66,23 +64,23 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
  void afficheCimetiere();
 
  void Affiche::afficheCombat(EnJeu* enJeu){
-     for(Creature* creaturesJ1 : enJeu->getLCreatureJ1()){
+     for(Creature* creaturesJ1 : enJeu->getJoueur1()->getLCreature()){
             std::cout << " | " << getColorDegagee(creaturesJ1) << creaturesJ1->getNom() << "\e[0m" <<"(" << creaturesJ1->getForce() << "," << creaturesJ1->getEndurance() << ")" << "(" << creaturesJ1->getCoutQuelconque()  << ",";
             Affiche::afficheCoutSpe(creaturesJ1->getCoutSpecifique());
             std::cout << ")";
      }
-      for(Terrain* terrainsJ1 : enJeu->getLTerrainJ1()){
+      for(Terrain* terrainsJ1 : enJeu->getJoueur1()->getLTerrain()){
             std::cout << " | " << getColorDegagee(terrainsJ1) << terrainsJ1->getType();
       }
 
       std::cout << std::endl;
 
-      for(Creature* creaturesJ2 : enJeu->getLCreatureJ2()){
+      for(Creature* creaturesJ2 : enJeu->getJoueur1()->getLCreature()){
             std::cout << " | " << getColorDegagee(creaturesJ2) << creaturesJ2->getNom() << "\e[0m" <<"(" << creaturesJ2->getForce() << "," << creaturesJ2->getEndurance() << ")" << "(" << creaturesJ2->getCoutQuelconque()  << ",";
             Affiche::afficheCoutSpe(creaturesJ2->getCoutSpecifique());
             std::cout << ")";
      }
-      for(Terrain* terrainsJ2 : enJeu->getLTerrainJ1()){
+      for(Terrain* terrainsJ2 : enJeu->getJoueur1()->getLTerrain()){
             std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->getType();
       }
       std::cout << std::endl;

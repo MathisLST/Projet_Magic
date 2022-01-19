@@ -31,20 +31,12 @@ int main(){
     Joueur* j1 = new Joueur(20, deck);
     Joueur* j2 = new Joueur(20, deck);
 
+    j1->setNom("Joueur 1");
+    j2->setNom("Joueur 2");
+
     EnJeu* enJeu = new EnJeu(j1, j2);
 
-    j1->melanger();
-    j2->melanger();
-
-    j1->piocher(7);
-    j2->piocher(7);
-
-    Affiche::afficheJeu(enJeu);
-    std::cout << std::endl;
-    
-
-
-
+    enJeu->start(j1,j2);
 
 return 0;
 
