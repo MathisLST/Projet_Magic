@@ -3,21 +3,29 @@
 #include <vector>
 #include "Creature.hpp"
 
-Creature::Creature (std::string nom, std::string type, int basedEndurance ,int basedForce, int endurance,
- int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite> capacites){
+Creature::Creature(std::string nom, std::string type, int const basedEndurance ,int const basedForce, int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite> capacites){
     m_nom = nom;
     m_type = type;
     m_basedEndurance = basedEndurance;
     m_basedForce = basedForce;
-    m_endurance = endurance;
-    m_force = force;
+    m_endurance = basedEndurance;
+    m_force = basedForce;
     m_coutQuelconque = coutQuelconque;
-    m_coutSpecifique = coutSpecifique;
     m_capacites = capacites;
     setDegagee(false);
     m_creature = true;
     m_attaque = false;
-    
+
+    m_coutTotal = m_coutQuelconque;
+    m_cptCoutSpec = std::vector<int>(5, 0);
+    // voir si on prefere garder dans creature un vector de typeTerrain ou un vector<int> qui compte le nombre de terrain
+    for(Terrain::land terrain : coutSpec){
+        int index = static_cast<int>(terrain); // voir si il ne faut pas sortir int du for
+        m_cptCoutSpec.at(index) += 1;
+        m_coutTotal +=1;
+    }
+
+
 }
 
 Creature::~Creature(){
@@ -50,9 +58,6 @@ bool Creature::getDegagee(){
     return m_degagee;
 }
 
-std::vector<std::string> Creature::getCoutSpecifique(){
-    return m_coutSpecifique;
-}
 std::vector<Capacite> Creature::getCapacites(){
     return m_capacites;
 }
@@ -92,3 +97,11 @@ void Creature::setAttaque(bool attaque){
      m_estDefenduPar.at(pos2) = m_estDefenduPar.at(pos1);
      m_estDefenduPar.at(pos1) = temp;
  }
+
+ std::vector<int> Creature::getCptCoutSpec(){
+    return m_cptCoutSpec;
+}
+
+int Creature::getCoutTotal(){
+    return m_coutTotal;
+}

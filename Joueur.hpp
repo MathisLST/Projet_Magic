@@ -21,7 +21,9 @@ class Joueur {
         std::vector<Carte*> m_main;
         std::vector<Creature*> m_LCreature;
         std::vector<Terrain*> m_LTerrain;
-
+        bool m_terrainPose;
+        std::vector<int> m_cptTerrainPrets;
+        int m_totalTerrainsPrets;
     public :
         Joueur();
         Joueur (int pv, Deck* deck);
@@ -46,6 +48,13 @@ class Joueur {
         void defense(Joueur* joueur);
         void choisirAttaque();
         void mortAuCombat(Creature* creature);
+        void ajoutTerrain(int indexCarte);
+        bool getTerrainPose();
+        void setTerrainPose(bool b);
+        void ajoutCreature(int indexCarte);
+        bool creaturePosable(Creature* creature);
+        std::vector<int> getCptTerrainPrets();
+        void majCptTerrainPrets();
 
 };
 

@@ -20,13 +20,15 @@ class Creature : public Carte {
         int m_force;
         int m_coutQuelconque;
         bool m_attaque;
-        std::vector <std::string> m_coutSpecifique;
         std::vector <Capacite> m_capacites;
         std::vector <Creature*> m_estDefenduPar;
+        // contient le compte des terrains specifiques necessaires
+        std::vector<int> m_cptCoutSpec;
+        int m_coutTotal;
+
 	
     public :
-        Creature (std::string nom, std::string type, int const basedEndurance ,int const basedForce, int endurance, 
-        int force, int coutQuelconque, std::vector <std::string> coutSpecifique, std::vector <Capacite> capacites);
+        Creature(std::string nom, std::string type, int const basedEndurance ,int const basedForce, int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite> capacites);
         virtual ~Creature();
         std::string getNom();
         std::string getType();
@@ -49,7 +51,8 @@ class Creature : public Carte {
 
         void setAttaque(bool attaque);
         void swap(int pos1, int pos2);
-        
+        std::vector<int> getCptCoutSpec();
+        int getCoutTotal();
 };
 
 #endif

@@ -16,6 +16,8 @@
             std::vector<Carte*> main;
             m_main = main;
             m_nom = "";
+            m_cptTerrainPrets = std::vector<int> (5,0);
+            m_totalTerrainsPrets = 0;
 
         }
 
@@ -249,4 +251,97 @@
                 }
             }
         }
-    
+    void Joueur::ajoutTerrain(int indexCarte){
+        Terrain* terrain = dynamic_cast<Terrain*>(m_main.at(indexCarte));
+        m_LTerrain.push_back(terrain);
+        std::cout << "Un terrain " <<  Terrain::landToString(terrain->getLandIndex()) << " a ete pose." << std::endl;
+        int indexCptTerrain = terrain->getLandIndex();
+        m_cptTerrainPrets.at(indexCptTerrain) += 1;
+        m_totalTerrainsPrets += 1;
+        m_main.erase(m_main.begin() + indexCarte);
+        setTerrainPose(true);
+        majCptTerrainPrets();
+    }
+        
+    bool Joueur::getTerrainPose(){
+        return m_terrainPose;
+    }
+
+    void Joueur::setTerrainPose(bool b){
+            m_terrainPose = b;
+        }
+
+        void Joueur::majCptTerrainPrets(){ // ajouter cette fonction a la fin de la phase de desengagement pour maj le cpt
+            std::vector<int> m_cptTerrainPrets(5,0); // voir si il ne faut pas faire un for pour mettre les valeurs a 0
+            m_totalTerrainsPrets = 0;
+            for(Terrain* terrain : m_LTerrain){
+                if(terrain->getDegagee()){
+                    m_cptTerrainPrets.at(terrain->getLandIndex()) += 1;
+                    m_totalTerrainsPrets +=1;
+                }
+
+            }
+        }
+        void Joueur::ajoutCreature(int indexCarte){
+            Creature* creature = dynamic_cast<Creature*>(m_main.at(indexCarte));
+            if (creaturePosable(creature)){
+                int coutQuelcCopy = creature->getCoutQuelconque();
+                int coutSpecCopy = 0;
+                for(int i = 0; i < 5; i++){
+                    coutSpecCopy = creature->getCptCoutSpec().at(i);
+                    if(coutSpecCopy > 0){
+                        for(Terrain* terrain : m_LTerrain){
+                            if(terrain->getDegagee() && terrain->getLandIndex() == i && coutSpecCopy > 0){  // degagee = desengagee
+                                    terrain->setDegagee(false);
+                                    coutSpecCopy -= 1;
+                            }
+                        }
+                    }
+                }
+                while(coutQuelcCopy > 0){
+                    majCptTerrainPrets();
+                    // refresh affichage
+                    int terrainType = -1;
+                    std::cout << "Choisissez un terrain a engager (" << coutQuelcCopy << " restant(s) )" << std::endl;
+                    while(terrainType > -1 && terrainType < 5){
+                        std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
+                        std::cin >> terrainType;
+                    }
+                    if(m_cptTerrainPrets.at(terrainType) > 0)
+                    {
+                        for(Terrain* terrain : m_LTerrain){
+                            if(terrain->getDegagee() && terrain->getLandIndex() == terrainType){  // degagee = desengagee
+                                    terrain->setDegagee(false);
+                                    coutQuelcCopy -= 1;
+                                    break;
+                            }
+                        }
+                    }
+                    else{
+                        std::cout << "Vous ne pouvez pas engager de " << Terrain::landToString(terrainType) <<"." << std::endl;
+                    }
+                }
+                majCptTerrainPrets();
+                //refresh affichage
+
+                m_LCreature.push_back(creature);
+                std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;
+                creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
+                m_main.erase(m_main.begin() + indexCarte);
+            }
+            else{
+                std::cout << "Cette creature ne peut pas etre posee !" << std::endl;
+            }
+        }
+
+        bool Joueur::creaturePosable(Creature* creature){
+            if(m_totalTerrainsPrets < creature->getCoutTotal())
+                return false;
+            else{
+                for(int i = 0; i < 5; i++){
+                    if(creature->getCptCoutSpec().at(i) > m_cptTerrainPrets.at(i))
+                        return false;
+                }
+                return true;
+            }
+        }

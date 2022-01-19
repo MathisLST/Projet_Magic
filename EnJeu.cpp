@@ -46,7 +46,46 @@ void EnJeu::phaseDesengagement(Joueur* j1){
 }
 
 void EnJeu::phasePose(Joueur* j1){
+    int nbCartesMain = j1->getMain().size();
+    int carteAPoser;
+    bool veutContinuer = true;
+    do{
+        std::cout << "Choisissez une carte a poser." << std::endl;
+        std::cin >> carteAPoser;
+        carteAPoser--;
+        nbCartesMain = j1->getMain().size();
+        
+        // On vérifie que le numéro renseigné est valable
+        if(carteAPoser < nbCartesMain && carteAPoser > -1){
+            // Si la carte désignée est une créature
+            if(j1->getMain().at(carteAPoser)->getCreature()){
+                j1->ajoutCreature(carteAPoser);
+            }
+            // Si la carte désignée est un terrain
+            else{
+                // Si un terrain n'a pas été posé ce tour
+                if(!j1->getTerrainPose()){
+                    j1->ajoutTerrain(carteAPoser);
+                }
+                // Si un terrain a déjà été posé ce tour
+                else{
+                    std::cout << "Vous avez deja pose un terrain ce tour." << std::endl;
+                }
+            }
+        }
+        else {
+            std::cout << "Le numero rentre n'est pas valide !" << std::endl;
+        }
+        // On demande si le joueur veut poser une autre carte
+        std::cout << "Voulez-vous poser une autre carte ? o/n" << std::endl;
+        std::string rep;
+        do{
+            std::cin >> rep;
+            if(rep == "o") veutContinuer = true;
+            else if(rep == "n") veutContinuer = false;
+        } while (!(rep == "o") && !(rep == "n"));
 
+    } while(veutContinuer);
 }
 
 bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
