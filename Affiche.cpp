@@ -16,17 +16,17 @@ inline bool instanceof(const T*) {
 */
 void Affiche::afficheJeu(EnJeu* jeu){
     system("clear");
-    std::cout << jeu->getJoueur1()->getNom() << " PV : \e[32m" << jeu->getJoueur1()->getPV() << "\e[0m ";
+    std::cout << jeu->getJoueur1()->getNom() << "\nPV : \e[32m" << jeu->getJoueur1()->getPV() << "\e[0m " << std::endl;
     afficheBibliotheque(jeu->getJoueur1());
-    std::cout << std::endl;
+    std::cout << "\n" << std::endl;
     afficheMain(jeu->getJoueur1());
-    std::cout << "\n_______________________________________________________________________________________________________________" << std::endl;
+    std::cout << "\n_________________________________________________________________________________________________________________________________________________________________________________________________________________" << std::endl;
     afficheCombat(jeu);
-    std::cout << "_______________________________________________________________________________________________________________\n" << std::endl;
+    std::cout << "_________________________________________________________________________________________________________________________________________________________________________________________________________________\n" << std::endl;
     afficheMain(jeu->getJoueur2());
-    std::cout << std::endl;
-    std::cout << jeu->getJoueur2()->getNom() << " PV : \e[32m" << jeu->getJoueur2()->getPV() << "\e[0m ";
+    std::cout << "\n" <<std::endl;
     afficheBibliotheque(jeu->getJoueur2());
+    std::cout << "\nPV : \e[32m" << jeu->getJoueur2()->getPV() << "\e[0m \n" << jeu->getJoueur2()->getNom() ;
     std::cout << "\n" << std::endl;
 
 
@@ -54,6 +54,7 @@ std::string Affiche::afficheCoutSpe(std::vector<int> coutSpecifique){
         for(int j = 0; j < cpt; j++ ){
             coutSpe = coutSpe + Terrain::landToString(i,true) + " ";
         }
+        i++;
     }
     return coutSpe;
 }
