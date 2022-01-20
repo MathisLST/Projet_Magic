@@ -28,7 +28,7 @@ int main(){
     Terrain* terr6 = new Terrain(Terrain::PLAINE);
 
     
-    
+    system("clear");
     std::vector<Carte*> deckVec = {crea, crea1, crea2, crea3, crea4, crea5, crea6, crea7, crea8, crea9,terr1,terr2,terr3,terr4,terr5,terr6};
     
     Deck* deck = new Deck(deckVec);
@@ -36,9 +36,16 @@ int main(){
     Joueur* j1 = new Joueur(20, deck);
     Joueur* j2 = new Joueur(20, deck);
 
-    
-    j1->setNom("Joueur 1");
-    j2->setNom("Joueur 2");
+    std::string nomJ1;
+    std::string nomJ2;
+
+    std::cout << "Joueur 1 veuillez choisir un Pseudo." << std::endl;
+    std::cin >> nomJ1;
+    j1->setNom(nomJ1);
+
+    std::cout << "Joueur 2 veuillez choisir un Pseudo." << std::endl;
+    std::cin >> nomJ2;
+    j2->setNom(nomJ2);
 
     EnJeu* enJeu = new EnJeu(j1, j2);
 
