@@ -47,7 +47,7 @@ class Joueur {
         void remonterStatsCreatures();
         bool attaque();
         void defense(Joueur* joueur);
-        void choisirAttaque();
+        void choisirAttaque(Joueur* j2);
         void mortAuCombat(Creature* creature);
         void ajoutTerrain(int indexCarte, EnJeu* enJeu);
         bool getTerrainPose();

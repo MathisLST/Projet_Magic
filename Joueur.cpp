@@ -100,10 +100,15 @@
             
             while (m_main.size() > 7){
                 int posCarte;
-                std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? ";
+                std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? " << std::endl;
                 std::cin >> posCarte;
-                std::cout << std::endl;
-                //deplace la carte vers le cimetiere
+                while (!(std::cin >> posCarte)){
+                            std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? "<< std::endl;
+                        }
+                
                 if(posCarte>0 && posCarte <= (int)m_main.size()){
                     m_cimetiere.push_back(m_main.at(posCarte - 1));
                     m_main.erase(m_main.begin()+posCarte-1);
@@ -128,9 +133,8 @@
             bool choix = true;
             while(choix){
                 std::string attaque;
-                std::cout << m_nom << " voulez-vous attaquer ? ('t' pour tout, 'n' pour non, ou 'c' pour choisir) ";
+                std::cout << m_nom << " voulez-vous attaquer ? ('t' pour tout, 'n' pour non, ou 'c' pour choisir) " << std::endl;
                 std::cin >> attaque;
-                std::cout << std::endl;
                 if(attaque == "t"){
                     for(Creature* creature : m_LCreature){
                         if(creature->getDegagee()){
@@ -148,9 +152,15 @@
                 }else if( attaque == "c"){
                     int carte;
                     while(choix){
-                        std::cout << m_nom << " veuillez choisir avec qui vous voulez attaquer. ";
+                        std::cout << m_nom << " veuillez choisir avec qui vous voulez attaquer. " << std::endl;
                         std::cin >> carte;
-                        std::cout << std::endl;
+                        while (!(std::cin >> carte)){
+                            std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout << m_nom << " veuillez choisir avec qui vous voulez attaquer. " << std::endl;
+                        }
+                        
                         if(carte > 0 && carte <= (int)m_LCreature.size()){
                             if(m_LCreature.at(carte-1)->getDegagee()){
                                 m_LCreature.at(carte-1)->setDegagee(false);
@@ -161,7 +171,7 @@
                         }
                         std::string continuer;
                         do{
-                            std::cout << "Voulez-vous continuer ? ";
+                            std::cout << "Voulez-vous continuer ? " << std::endl;
                             std::cin >> continuer;
                             if(continuer == "o") choix = true;
                             else if(continuer == "n") return true;
@@ -174,27 +184,36 @@
 
                 }
             }
+            return false;
         }
 
 
     void Joueur::defense(Joueur* joueur2){
         std::string defense;
         do{
-            std::cout << m_nom << " voulez-vous defendre ? ('o' oui, 'n' non) ";
+            std::cout << m_nom << " voulez-vous defendre ? ('o' oui, 'n' non) " << std::endl;
             std::cin >> defense;
-            std::cout << std::endl;
             if(defense == "o"){
                 int surQui;
                 bool choix = true;
                 while(choix){
-                    std::cout << "Sur qui voulez-vous defendre ? ";
-                    std::cin >> surQui;
-
+                    std::cout << "Sur qui voulez-vous defendre ? " << std::endl;
+                     while (!(std::cin >> surQui)){
+                        std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        std::cout << "Sur qui voulez-vous defendre ? " << std::endl;
+                    }
                     if(surQui > 0 && surQui <= (int)joueur2->getLCreature().size()){
                         if (joueur2->getLCreature().at(surQui-1)->getAttaque()){
                                 int avecQui;
-                                std::cout << "Avec qui voulez-vous defendre ? ";
-                                std::cin >> avecQui;
+                                std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
+                                while (!(std::cin >> avecQui)){
+                                    std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                                    std::cin.clear();
+                                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                                    std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
+                                }
                                 if( m_LCreature.at(avecQui-1)->getDegagee()){
                                     joueur2->addDefenseur(surQui-1, m_LCreature.at(avecQui-1));
                                     m_LCreature.at(avecQui-1)->setDegagee(false);
@@ -209,7 +228,7 @@
                     }
                     std::string continuer;
                     do{
-                            std::cout << "Voulez-vous continuer ? ";
+                            std::cout << "Voulez-vous continuer ? ('o' oui, 'n' non)" << std::endl;
                             std::cin >> continuer;
                             if(continuer == "o") choix = true;
                             else if(continuer == "n") choix = false;
@@ -226,17 +245,29 @@
         } while (defense != "o" && defense != "n");  
     }
 
-    void Joueur::choisirAttaque(){
+    void Joueur::choisirAttaque(Joueur* j2){
         int i = 1;
         for(Creature* creatureA : m_LCreature){
             if(creatureA->getAttaque() && (int)creatureA->getEstDefenduPar().size()>1){
                 int carte;
                 for(int y = 0; y < (int)creatureA->getEstDefenduPar().size()-1; y++){
-                    std::cout << "Quelle carte voulez-vous defendre en " << y + 1 << " ? ";
-                    std::cin >> carte;
-                    std::cout << std::endl;
+                    std::cout << "Quelle carte voulez-vous defendre en " << y + 1 << " ? " << std::endl;
+                    while (!(std::cin >> carte)){
+                        std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        std::cout << "Quelle carte voulez-vous defendre en " << y + 1 << " ? " << std::endl;
+                    }
+                    
                     if( carte > 0 && carte <= (int)creatureA->getEstDefenduPar().size()){
-                        creatureA->swap(carte, 0);
+                        int index = 0;
+                        for (Creature* creature : creatureA->getEstDefenduPar()){
+                            if(creature == j2->getLCreature().at(carte - 1)){
+                                creatureA->swap(index, y);
+                            }
+                            index++;
+                        }
+                        
                     }
                 }
             }
@@ -308,7 +339,12 @@
                     std::cout << "Choisissez un terrain a engager (" << coutQuelcCopy << " restant(s) )" << std::endl;
                     while(terrainType > -1 && terrainType < 5){
                         std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
-                        std::cin >> terrainType;
+                        while (!(std::cin >> terrainType)){
+                            std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
+                        }                        
                     }
                     if(m_cptTerrainPrets.at(terrainType) > 0)
                     {

@@ -22,6 +22,7 @@ public:
 
 static std::string getColorDegagee(Carte* carte);
 static std::string getColorType(Creature* carte);
+static std::string getColorAttaque(Creature* creature, Joueur* j2);
     
 };
 

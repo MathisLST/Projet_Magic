@@ -28,7 +28,7 @@ class Creature : public Carte {
 
 	
     public :
-        Creature(std::string nom, std::string type, int const basedEndurance ,int const basedForce, int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite> capacites);
+        Creature(std::string nom, std::string type, int basedEndurance, int basedForce , int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite> capacites);
         virtual ~Creature();
         std::string getNom();
         std::string getType();
