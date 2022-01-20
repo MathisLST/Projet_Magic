@@ -10,19 +10,16 @@ int main(){
     std::vector<Terrain::land> coutSpe = {Terrain::PLAINE};
 
     
-    Capacite vol = Capacite((std::string)"Vol", (std::string)"Il Vol");
-    std::vector<Capacite> capa = {vol};
-    
-    Creature* crea = new Creature((std::string)"Le roi dieux", (std::string)"ange", 20, 2, 0, coutSpe, capa); 
-    Creature* crea1 = new Creature((std::string)"Le roi dieux1", (std::string)"ange", 20, 2, 0, coutSpe, capa); 
-    Creature* crea2 = new Creature((std::string)"Le roi dieux2", (std::string)"ange", 20, 2, 0, coutSpe, capa); 
-    Creature* crea3 = new Creature((std::string)"Le roi dieux3", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea4 = new Creature((std::string)"Le roi dieux4", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea5 = new Creature((std::string)"Le roi dieux5", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea6 = new Creature((std::string)"Le roi dieux6", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea7 = new Creature((std::string)"Le roi dieux7", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea8 = new Creature((std::string)"Le roi dieux8", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea9 = new Creature((std::string)"Le roi dieux9", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
+    Creature* crea = new Creature((std::string)"Le roi dieux", (std::string)"ange", 20, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea1 = new Creature((std::string)"Le roi dieux1", (std::string)"ange", 20, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea2 = new Creature((std::string)"Le roi dieux2", (std::string)"ange", 20, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea3 = new Creature((std::string)"Le roi dieux3", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea4 = new Creature((std::string)"Le roi dieux4", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea5 = new Creature((std::string)"Le roi dieux5", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea6 = new Creature((std::string)"Le roi dieux6", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea7 = new Creature((std::string)"Le roi dieux7", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea8 = new Creature((std::string)"Le roi dieux8", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
+    Creature* crea9 = new Creature((std::string)"Le roi dieux9", (std::string)"ange", 2, 2, 0, coutSpe, {Capacite::VOL}); 
     Terrain* terr1 = new Terrain(Terrain::PLAINE);
     Terrain* terr2 = new Terrain(Terrain::PLAINE);
     Terrain* terr3 = new Terrain(Terrain::PLAINE);

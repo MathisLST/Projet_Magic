@@ -20,7 +20,7 @@ class Creature : public Carte {
         int m_force;
         int m_coutQuelconque;
         bool m_attaque;
-        std::vector <Capacite> m_capacites;
+        std::vector <Capacite::capaciteStatique> m_capacites;
         std::vector <Creature*> m_estDefenduPar;
         // contient le compte des terrains specifiques necessaires
         std::vector<int> m_cptCoutSpec;
@@ -28,7 +28,7 @@ class Creature : public Carte {
 
 	
     public :
-        Creature(std::string nom, std::string type, int basedEndurance, int basedForce , int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite> capacites);
+        Creature(std::string nom, std::string type, int const basedEndurance ,int const basedForce, int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite::capaciteStatique> capacites);
         virtual ~Creature();
         std::string getNom();
         std::string getType();
@@ -40,7 +40,7 @@ class Creature : public Carte {
         bool getDegagee();
         void addDefenseur(Creature* creature);
         std::vector <std::string> getCoutSpecifique();
-        std::vector <Capacite> getCapacites();
+        std::vector <Capacite::capaciteStatique> getCapacites();
 
         void setDegagee(bool estDegagee);
         void setForce(int force);

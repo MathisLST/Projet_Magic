@@ -3,7 +3,7 @@
 #include <vector>
 #include "Creature.hpp"
 
-Creature::Creature(std::string nom, std::string type, int basedEndurance, int basedForce,  int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite> capacites){
+Creature::Creature(std::string nom, std::string type, int const basedEndurance ,int const basedForce, int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite::capaciteStatique> capacites){
     m_nom = nom;
     m_type = type;
     m_basedEndurance = basedEndurance;
@@ -58,7 +58,7 @@ bool Creature::getDegagee(){
     return m_degagee;
 }
 
-std::vector<Capacite> Creature::getCapacites(){
+std::vector<Capacite::capaciteStatique> Creature::getCapacites(){
     return m_capacites;
 }
 
