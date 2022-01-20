@@ -51,7 +51,7 @@ void EnJeu::phasePose(Joueur* j1){
     bool veutContinuer = true;
     std::string rep;
     do{
-            std::cout << j1->getNom() << " voulez-vous poser une carte a poser." << std::endl;
+            std::cout << j1->getNom() << " voulez-vous poser une carte ? ('o' oui, 'n' non)" << std::endl;
             std::cin >> rep;
             if(rep == "o") veutContinuer = true;
             else if(rep == "n") veutContinuer = false;
@@ -97,12 +97,23 @@ void EnJeu::phasePose(Joueur* j1){
 
 bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
     if(j1->attaque()){
+        Affiche::afficheJeu(this);
         j2->defense(j1);
-        j1->choisirAttaque();
+        Affiche::afficheJeu(this);
+        j1->choisirAttaque(j2);
+        Affiche::afficheJeu(this);
+        std::string pause;
+        std::cout << "Rentrez qqc pour lancer le combat" << std::endl;
+        std::cin >> pause;
     }
+   
+
+
     for(Creature* creature : j1->getLCreature()){
-        std::cout <<"tu est la" << std::endl;
         if(creature->getAttaque()){
+
+            creature->setAttaque(false);
+
             if(creature->getEstDefenduPar().size() == 0){
                 if(j2->setPv(creature->getForce())){
 
@@ -127,6 +138,7 @@ bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
                 }
             }
         }
+
     }
     return true;
 }
@@ -158,9 +170,11 @@ bool EnJeu::tour(Joueur* j1, Joueur* j2){
             return false;
         }
     }
-    
     Affiche::afficheJeu(this);
+
     phasePose(j1);
+    Affiche::afficheJeu(this);
+    
     
     phaseFinTour(j1, j2);
     

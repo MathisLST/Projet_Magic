@@ -13,9 +13,9 @@ int main(){
     Capacite vol = Capacite((std::string)"Vol", (std::string)"Il Vol");
     std::vector<Capacite> capa = {vol};
     
-    Creature* crea = new Creature((std::string)"Le roi dieux", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea1 = new Creature((std::string)"Le roi dieux1", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
-    Creature* crea2 = new Creature((std::string)"Le roi dieux2", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
+    Creature* crea = new Creature((std::string)"Le roi dieux", (std::string)"ange", 20, 2, 0, coutSpe, capa); 
+    Creature* crea1 = new Creature((std::string)"Le roi dieux1", (std::string)"ange", 20, 2, 0, coutSpe, capa); 
+    Creature* crea2 = new Creature((std::string)"Le roi dieux2", (std::string)"ange", 20, 2, 0, coutSpe, capa); 
     Creature* crea3 = new Creature((std::string)"Le roi dieux3", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
     Creature* crea4 = new Creature((std::string)"Le roi dieux4", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
     Creature* crea5 = new Creature((std::string)"Le roi dieux5", (std::string)"ange", 2, 2, 0, coutSpe, capa); 
@@ -39,6 +39,7 @@ int main(){
     Joueur* j1 = new Joueur(20, deck);
     Joueur* j2 = new Joueur(20, deck);
 
+    
     j1->setNom("Joueur 1");
     j2->setNom("Joueur 2");
 

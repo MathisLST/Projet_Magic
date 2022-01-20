@@ -38,11 +38,11 @@ int Terrain::getLandIndex(){
 const char* Terrain::landToString(int i, bool abregee) throw(){
     switch (static_cast<land>(i))
     {
-        case Terrain::PLAINE: if (!abregee) {return "PLAINE";} else return "P";
-        case Terrain::ILE: if (!abregee) return "ILE"; else return "I";
-        case Terrain::MARAIS: if (!abregee) return "MARAIS"; else return "Ma";
-        case Terrain::MONTAGNE: if (!abregee) return "MONTAGNE"; else return "Mo";
-        case Terrain::FORET: if (!abregee) return "FORET"; else return "F";
+        case Terrain::PLAINE: if (!abregee) {return "\e[97mPLAINE\e[0m" ;} else return "\e[97mP\e[0m";
+        case Terrain::ILE: if (!abregee) return "\e[34mILE\e[0m"; else return "\e[34mI\e[0m";
+        case Terrain::MARAIS: if (!abregee) return "\e[90mMARAIS\e[0m"; else return "\e[90mMa\e[0m";
+        case Terrain::MONTAGNE: if (!abregee) return "\e[31mMONTAGNE\e[0m"; else return "\e[31mMo\e[0m";
+        case Terrain::FORET: if (!abregee) return "\e[32mFORET\e[0m"; else return "\e[32mF\e[0m";
         default: throw std::invalid_argument("Unimplemented item");
     }
 }
