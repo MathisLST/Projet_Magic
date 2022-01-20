@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <random>
 #include "EnJeu.hpp"
 
 EnJeu::EnJeu(Joueur* joueur1, Joueur* joueur2){
@@ -27,8 +28,10 @@ Joueur* EnJeu::getJ2(){
     return m_j2;
 }
 
-int EnJeu::tirerAuSort(){
-    return rand() % 1;  
+bool EnJeu::tirerAuSort(){
+    std::mt19937 rng(std::random_device{}());
+    return std::uniform_int_distribution<>{0, 1}(rng);
+  
 }
 
 bool EnJeu::phasePioche(Joueur* j1, Joueur* j2){
@@ -193,7 +196,7 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
     std::cout << joueur1->getNom() << std::endl;
     
     
-    if (tirerAuSort() == 0){
+    if (tirerAuSort()){
        while (1){
 
             if (!tour(joueur1, joueur2)){
