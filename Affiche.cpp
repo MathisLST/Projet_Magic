@@ -79,7 +79,7 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
         int c2 = 1;
       for(Creature* creaturesJ2 : enJeu->getJoueur2()->getLCreature()){
             std::cout << " | " << c2 << "- "   << getColorDegagee(creaturesJ2) << creaturesJ2->getNom() << "(" << creaturesJ2->getForce() << "," << creaturesJ2->getEndurance() << ")" << "(" << creaturesJ2->getCoutQuelconque()  << ","<< Affiche::afficheCoutSpe(creaturesJ2->getCptCoutSpec()) << ")" << Affiche::getColorAttaque(creaturesJ2, enJeu->getJoueur1());
-
+            c2++;
                  }
       for(Terrain* terrainsJ2 : enJeu->getJoueur2()->getLTerrain()){
             std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->landToString(terrainsJ2->getLandIndex()) ;

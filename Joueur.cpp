@@ -101,7 +101,6 @@
             while (m_main.size() > 7){
                 int posCarte;
                 std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? " << std::endl;
-                std::cin >> posCarte;
                 while (!(std::cin >> posCarte)){
                             std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
                             std::cin.clear();
@@ -337,7 +336,7 @@
                     Affiche::afficheJeu(enJeu);
                     int terrainType = -1;
                     std::cout << "Choisissez un terrain a engager (" << coutQuelcCopy << " restant(s) )" << std::endl;
-                    while(terrainType > -1 && terrainType < 5){
+                    while(terrainType <= -1 || terrainType >= 5){
                         std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
                         while (!(std::cin >> terrainType)){
                             std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
