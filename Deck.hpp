@@ -5,15 +5,25 @@
 #include <cstdlib>
 #include <vector>
 #include "Carte.hpp"
+#include "Encyclopedie.hpp"
 
+class Encyclopedie;
 class Deck {
     private :
+        std::string m_nom;
+        std::vector<int> m_deckIndex;
         std::vector<Carte*> m_deck;
+        Encyclopedie* m_encyclopedie;
     public :
         Deck();
-        Deck (std::vector<Carte*> deck);
+        Deck (std::string nom, std::vector<int> deck, Encyclopedie* encyclopedie); // reference ?
+        //Deck (std::string nom, std::vector<Carte*> deck, Encyclopedie* encyclopedie); //reference ?
         ~Deck();
+        std::vector<int> getDeckIndex();
         std::vector<Carte*> getDeck();
+        std::string getNom();
+
+        void construireDeck();
 
 };
 

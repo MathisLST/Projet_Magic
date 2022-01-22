@@ -25,6 +25,7 @@ class Creature : public Carte {
         // contient le compte des terrains specifiques necessaires
         std::vector<int> m_cptCoutSpec;
         int m_coutTotal;
+        std::vector <Terrain::land> m_coutSpecifique;
 
 	
     public :
@@ -39,7 +40,7 @@ class Creature : public Carte {
         int getCoutQuelconque();
         bool getDegagee();
         void addDefenseur(Creature* creature);
-        std::vector <std::string> getCoutSpecifique();
+        std::vector <Terrain::land> getCoutSpecifique(); //voir si on modifie la facon de compter les terrains
         std::vector <Capacite::capaciteStatique> getCapacites();
 
         void setDegagee(bool estDegagee);

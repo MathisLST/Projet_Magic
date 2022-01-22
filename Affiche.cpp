@@ -110,7 +110,7 @@ std::string Affiche::getColorAttaque(Creature* creature, Joueur* j2){
   if( creature->getAttaque()){
         std::string texteAttaque = "";
         texteAttaque+= " \e[41;37mA";
-        if(!creature->getEstDefenduPar().size()==0){
+        if(!(creature->getEstDefenduPar().size()==0)){
             for(Creature* defenseur : creature->getEstDefenduPar() ){
                 int index = 1;
                 for(Creature* creatureD : j2->getLCreature()){

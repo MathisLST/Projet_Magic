@@ -102,11 +102,11 @@
                 int posCarte;
                 std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? " << std::endl;
                 while (!(std::cin >> posCarte)){
-                            std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                            std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? "<< std::endl;
-                        }
+                    std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << m_nom << " vous avez trop de cartes ! Laquelle voulez-vous defausser ? "<< std::endl;
+                }
                 
                 if(posCarte>0 && posCarte <= (int)m_main.size()){
                     m_cimetiere.push_back(m_main.at(posCarte - 1));

@@ -1,5 +1,3 @@
-// #ifndef PERSONNE_HPP
-// #define PERSONNE_HPP
 #include "Creature.hpp"
 #include "Deck.hpp"
 #include "Joueur.hpp"
@@ -7,9 +5,11 @@
 
 
 int main(){
+    
+    /*
     std::vector<Terrain::land> coutSpe = {Terrain::PLAINE};
 
-    /*
+    
     Creature* crea = new Creature((std::string)"Le roi dieu", (std::string)"ange", 20, 2, 0, coutSpe, {Capacite::VOL}); 
     Creature* crea1 = new Creature((std::string)"Le roi dieu1", (std::string)"ange", 20, 2, 0, coutSpe, {Capacite::VOL}); 
     Creature* crea2 = new Creature((std::string)"Le roi dieu2", (std::string)"ange", 20, 2, 0, coutSpe, {Capacite::VOL}); 
@@ -24,6 +24,11 @@ int main(){
 
     
     system("clear");
+
+    Encyclopedie encyclopedie = Encyclopedie();
+    
+
+    /*
     std::vector<Carte*> deckVec = {new Creature("Maitre-chien alpin", "humain et guerrier", 2, 2, 0, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})),
     new Creature("Mentor du conclave", "centaure et clerc", 2, 2, 0, std::vector<Terrain::land>({Terrain::FORET, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})),
     new Creature("Belliciste de la flotte implacable", "orque et pirate", 3, 3, 1, std::vector<Terrain::land>({Terrain::MARAIS, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})),
@@ -42,10 +47,12 @@ int main(){
      new Terrain(Terrain::ILE),
      new Terrain(Terrain::PLAINE)};
     
-    Deck* deck = new Deck(deckVec);
+    Deck* deck = new Deck("deck test", deckVec, encyclopedie); // plus utilise
+
+    */
     
-    Joueur* j1 = new Joueur(20, deck);
-    Joueur* j2 = new Joueur(20, deck);
+    Joueur* j1 = new Joueur(20, encyclopedie.choisirDeck());
+    Joueur* j2 = new Joueur(20, encyclopedie.choisirDeck());
 
     std::string nomJ1;
     std::string nomJ2;
@@ -65,4 +72,3 @@ int main(){
 return 0;
 
 }
-// #endif       dans chaque fichier

@@ -15,6 +15,7 @@ Creature::Creature(std::string nom, std::string type, int const basedEndurance ,
     setDegagee(true);
     m_creature = true;
     m_attaque = false;
+    m_coutSpecifique = coutSpec;
 
     m_coutTotal = m_coutQuelconque;
     m_cptCoutSpec = std::vector<int>(5, 0);
@@ -104,4 +105,8 @@ void Creature::setAttaque(bool attaque){
 
 int Creature::getCoutTotal(){
     return m_coutTotal;
+}
+
+std::vector <Terrain::land> Creature::getCoutSpecifique(){
+    return m_coutSpecifique;
 }

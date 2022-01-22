@@ -4,11 +4,12 @@
 #include "Encyclopedie.hpp"
 
 Encyclopedie::Encyclopedie(){
-    std::vector<Carte*> m_encyclopedie;
+    //std::vector<Carte*> m_encyclopedie;
+    //std::vector<Deck*> m_decks; // vector de decks sous forme d'int (id des cartes dans l'encyclopedie)
 
     // Reference : Edition de base 2021
 
-    // TERRAINS
+    // TERRAINS /* 0 a 4 */
     m_encyclopedie.push_back(new Terrain(Terrain::PLAINE));
     m_encyclopedie.push_back(new Terrain(Terrain::ILE));
     m_encyclopedie.push_back(new Terrain(Terrain::MARAIS));
@@ -17,7 +18,7 @@ Encyclopedie::Encyclopedie(){
 
     // CREATURES
     
-    // PLAINE
+    // PLAINE /* 5 a 29 */
     m_encyclopedie.push_back(new Creature("Chien de garde alpin", "chien", 2, 2, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VIGILANCE})));
     m_encyclopedie.push_back(new Creature("Choriste consacre", "humain et clerc", 1, 1, 0, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::LIENDEVIE})));
     m_encyclopedie.push_back(new Creature("Maitre du troupeau avemain", "oiseau et guerrier", 3, 4, 3, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
@@ -30,7 +31,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Batailleur de l'aube", "licorne", 1, 3, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Experte fauconniere", "humain et soldat", 3, 2, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Voltigeur des bourrasques", "griffon", 2, 3, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
-    m_encyclopedie.push_back(new Creature("Bataillon improvise", "humain et ssoldat", 2, 3, 2, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
+    m_encyclopedie.push_back(new Creature("Bataillon improvise", "humain et soldat", 2, 3, 2, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Mangara, le diplomate", "humain et clerc", 4, 2, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::LIENDEVIE})));
     m_encyclopedie.push_back(new Creature("Chef de la meute", "chien", 2, 2, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Cabot turbulent", "chien", 4, 3, 3, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
@@ -44,7 +45,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Cheval aile de Vryn", "pegase", 1, 2, 2, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
     m_encyclopedie.push_back(new Creature("Remparts aux runes de garde", "mur", 3, 0, 2, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::DEFENSEUR})));
 
-    // ILE
+    // ILE /* 30 a 49 */
     m_encyclopedie.push_back(new Creature("Barrin, archimage tolarian", "humain et sorcier", 2, 2, 1, std::vector<Terrain::land>({Terrain::ILE, Terrain::ILE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Chapardeur fantomal", "esprit et gredin", 1, 2, 1, std::vector<Terrain::land>({Terrain::ILE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Doyenne jeskai", "humain et moine", 2, 1, 1, std::vector<Terrain::land>({Terrain::ILE}), std::vector<Capacite::capaciteStatique>({})));
@@ -66,7 +67,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Mur des runes", "mur", 4, 0, 0, std::vector<Terrain::land>({Terrain::ILE}), std::vector<Capacite::capaciteStatique>({Capacite::DEFENSEUR})));
     m_encyclopedie.push_back(new Creature("Crabe piecevoeu", "crabe", 5, 2, 3, std::vector<Terrain::land>({Terrain::ILE}), std::vector<Capacite::capaciteStatique>({})));
 
-    // MARAIS
+    // MARAIS /* 50 a 72 */
     m_encyclopedie.push_back(new Creature("Receptacle de l'archifielleux", "humain et clerc", 1, 1, 0, std::vector<Terrain::land>({Terrain::MARAIS}), std::vector<Capacite::capaciteStatique>({Capacite::LIENDEVIE})));
     m_encyclopedie.push_back(new Creature("Goinfre de sang", "vampire", 3, 4, 4, std::vector<Terrain::land>({Terrain::MARAIS}), std::vector<Capacite::capaciteStatique>({Capacite::LIENDEVIE})));
     m_encyclopedie.push_back(new Creature("Zombie emprisonne", "zombie", 3, 2, 2, std::vector<Terrain::land>({Terrain::MARAIS}), std::vector<Capacite::capaciteStatique>({})));
@@ -91,7 +92,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Vito, Epine de la Rose du crepuscule", "vampire et clerc", 3, 1, 2, std::vector<Terrain::land>({Terrain::MARAIS}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Cadavre ambulant", "zombie", 2, 2, 1, std::vector<Terrain::land>({Terrain::MARAIS}), std::vector<Capacite::capaciteStatique>({})));
 
-    // MONTAGNE
+    // MONTAGNE /* 73 a 94 */
     m_encyclopedie.push_back(new Creature("Shamane a crecelle de guerre", "gobelin et shamane", 2, 2, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Chien d'eclair", "elemental et chien", 2, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE}))); // celerite normalement
     m_encyclopedie.push_back(new Creature("Brute de la fosse aux ossements", "cyclope", 5, 4, 4, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::MENACE})));
@@ -115,7 +116,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Terreur des pics", "dragon", 4, 5, 3, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
     m_encyclopedie.push_back(new Creature("Ogre des tourelles", "ogre et guerrier", 3, 4, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PORTEE})));
 
-    //FORET
+    //FORET /* 95 a 119 */
     m_encyclopedie.push_back(new Creature("Azusa, egaree mais en quete", "humain et moine", 2, 1, 2, std::vector<Terrain::land>({Terrain::FORET}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Chene aux poings noueux", "sylvin", 3, 2, 2, std::vector<Terrain::land>({Terrain::FORET, Terrain::FORET}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Pisteur de la canopee", "chat", 2, 4, 3, std::vector<Terrain::land>({Terrain::FORET}), std::vector<Capacite::capaciteStatique>({})));
@@ -142,7 +143,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Cochon truffier", "sanglier", 2, 2, 2, std::vector<Terrain::land>({Terrain::FORET}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Garde des bois", "sylvin", 7, 5, 4, std::vector<Terrain::land>({Terrain::FORET, Terrain::FORET}), std::vector<Capacite::capaciteStatique>({Capacite::VIGILANCE})));
 
-    // MIXTE
+    // MIXTE /* 120 a 130 */
     m_encyclopedie.push_back(new Creature("Maitre-chien alpin", "humain et guerrier", 2, 2, 0, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Mentor du conclave", "centaure et clerc", 2, 2, 0, std::vector<Terrain::land>({Terrain::FORET, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Belliciste de la flotte implacable", "orque et pirate", 3, 3, 1, std::vector<Terrain::land>({Terrain::MARAIS, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
@@ -155,6 +156,23 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Assassins jumelames", "elfe et assassin", 4, 5, 3, std::vector<Terrain::land>({Terrain::MARAIS, Terrain::FORET}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Gardien des spheres", "oiseau et sorcier", 2, 2, 0, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::ILE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
 
+    // CARTES TEST /* 131 a ... */
+
+
+
+    // Preparation decks
+    Deck* deckBlanc = new Deck("Deck Blanc", std::vector<int>({0,0,0,0,0,0,0,0,0,0,0,0,5,5,6,6,8,13,13,14,14,16,16,22,22,24,24,27,29,29}), this);
+    Deck* deckBleu = new Deck("Deck Bleu", std::vector<int>({1,1,1,1,1,1,1,1,1,1,1,1,31,31,33,33,35,35,36,37,38,38,39,40,42,42,43,44,48,49}), this);
+    Deck* deckNoir = new Deck("Deck Noir", std::vector<int>({2,2,2,2,2,2,2,2,2,2,2,2,50,50,51,52,52,53,54,55,57,58,58,59,61,61,62,67,68,72}), this);
+    Deck* deckRouge = new Deck("Deck Rouge", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,73,74,74,75,76,76,77,82,82,85,87,87,88,89,89,90,93,94}), this);
+    Deck* deckVert = new Deck("Deck Vert", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,98,99,99,103,104,105,107,109,109,110,111,115,115,116,117,117,118,119}), this);
+
+
+    m_decks.push_back(deckBlanc);
+    m_decks.push_back(deckBleu);
+    m_decks.push_back(deckNoir);
+    m_decks.push_back(deckRouge);
+    m_decks.push_back(deckVert);
 }
 
 Encyclopedie::~Encyclopedie(){
@@ -167,3 +185,32 @@ std::vector<Carte*> Encyclopedie::getEncyclopedie(){
     return m_encyclopedie;
 }
 
+Carte* Encyclopedie::getCarte(int i) throw(){
+    if(i > -1 && i < (int)m_encyclopedie.size())
+        return m_encyclopedie.at(i);
+    else
+        throw std::invalid_argument("index de carte invalide"); 
+    
+}
+
+Deck* Encyclopedie::choisirDeck(){
+    // gerer affichage decks dans la console au moment de chosir
+    bool deckValide = false;
+    int indexDeck;
+    while(!deckValide){
+        std::cout << "Veuillez choisir un deck. 1-" << m_decks.size() << std::endl;
+        while(!(std::cin >> indexDeck)){
+            std::cout << "Numero de deck invalide, veuillez rentrer un entier !" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Veuillez choisir un deck. 1-" << m_encyclopedie.size() << std::endl;
+        }
+        if(indexDeck > -1 && indexDeck < (int)m_decks.size()){
+            deckValide = true;
+        }
+    }
+    return m_decks.at(indexDeck-1);
+
+
+
+}
