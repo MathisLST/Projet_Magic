@@ -96,7 +96,7 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Shamane a crecelle de guerre", "gobelin et shamane", 2, 2, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Chien d'eclair", "elemental et chien", 2, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE}))); // celerite normalement
     m_encyclopedie.push_back(new Creature("Brute de la fosse aux ossements", "cyclope", 5, 4, 4, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::MENACE})));
-    m_encyclopedie.push_back(new Creature("Taquineur effronte", "gobelin", 1, 1, 4, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::INDESTRUCTIBLE})));
+    m_encyclopedie.push_back(new Creature("Taquineur effronte", "gobelin", 1, 1, 4, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Incinerateur de Chandra", "elemental", 6, 6, 5, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PIETINEMENT})));
     m_encyclopedie.push_back(new Creature("Molosse de magma de Chandra", "elemental et chien", 2, 2, 1, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Pyrolin de Chandra", "elemental et lezard", 3, 1, 1, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
@@ -166,13 +166,16 @@ Encyclopedie::Encyclopedie(){
     Deck* deckNoir = new Deck("Deck Noir", std::vector<int>({2,2,2,2,2,2,2,2,2,2,2,2,50,50,51,52,52,53,54,55,57,58,58,59,61,61,62,67,68,72}), this);
     Deck* deckRouge = new Deck("Deck Rouge", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,73,74,74,75,76,76,77,82,82,85,87,87,88,89,89,90,93,94}), this);
     Deck* deckVert = new Deck("Deck Vert", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,98,99,99,103,104,105,107,109,109,110,111,115,115,116,117,117,118,119}), this);
-
+    Deck* deckToucher = new Deck("Deck Vert", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,108,108,108,108,108,4,4,4,4,4,4,4,4,4,4,108,108,108}), this);
+    Deck* deckMenace = new Deck("Deck Vert", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,75,75,75,75,75,3,3,3,3,3,3,3,3,3,3,75,75,75}), this);
 
     m_decks.push_back(deckBlanc);
     m_decks.push_back(deckBleu);
     m_decks.push_back(deckNoir);
     m_decks.push_back(deckRouge);
     m_decks.push_back(deckVert);
+    m_decks.push_back(deckToucher);
+    m_decks.push_back(deckMenace);
 }
 
 Encyclopedie::~Encyclopedie(){
@@ -203,9 +206,9 @@ Deck* Encyclopedie::choisirDeck(){
             std::cout << "Numero de deck invalide, veuillez rentrer un entier !" << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Veuillez choisir un deck. 1-" << m_encyclopedie.size() << std::endl;
+            std::cout << "Veuillez choisir un deck. 1-" << m_decks.size() << std::endl;
         }
-        if(indexDeck > -1 && indexDeck < (int)m_decks.size()){
+        if(indexDeck >= 1 && indexDeck <= (int)m_decks.size()){
             deckValide = true;
         }
     }

@@ -25,6 +25,7 @@ class Joueur {
         bool m_terrainPose;
         std::vector<int> m_cptTerrainPrets;
         int m_totalTerrainsPrets;
+        bool m_aAttaque;
     public :
         Joueur();
         Joueur (int pv, Deck* deck);
@@ -56,6 +57,12 @@ class Joueur {
         bool creaturePosable(Creature* creature);
         std::vector<int> getCptTerrainPrets();
         void majCptTerrainPrets();
+        bool getCreatureReady();
+        bool getAAttaque();
+        void setAAttaque(bool aAttaque);
+
+    
+
 
 };
 

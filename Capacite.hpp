@@ -25,15 +25,18 @@ class Capacite{
             PROTECTIONBLEU,
             PROTECTIONNOIR,
             PROTECTIONROUGE,
-            PROTECTIONVERT,
-            INDESTRUCTIBLE // ajoute
+            PROTECTIONVERT
         };
-        Capacite(std::string nom, std::string description);
-        std::string getNom();
-        std::string getDescription();
-    private :
-        std::string m_nom;
-        std::string m_description;
+
+        Capacite(capaciteStatique capaciteStatique);
+        ~Capacite();
+
+        capaciteStatique getCapaciteStatique();
+
+        const char* capaToString(capaciteStatique capacite, bool abregee) throw();
+
+    private : 
+        capaciteStatique m_capaciteStatique;
     
 };
 

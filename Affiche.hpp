@@ -19,6 +19,7 @@ public:
  static void afficheCarte(std::vector<Creature*>, std::vector<Terrain*>);
  static void afficheCimetiere(std::vector<Carte*> cimetiere);
  static void afficheCombat(EnJeu* enJeu);
+ 
 
 static std::string getColorDegagee(Carte* carte);
 static std::string getColorType(Creature* carte);

@@ -52,8 +52,26 @@
             return m_nom;
         }
 
+        bool Joueur::getAAttaque(){
+            return m_aAttaque;
+        }
+
+        void Joueur::setAAttaque(bool aAttaque){
+            m_aAttaque = aAttaque;
+        }
+
+        bool Joueur::getCreatureReady(){
+            for (Creature* creature : m_LCreature){
+                if(creature->getDegagee() ){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         bool Joueur::setPv(int pv){
-            m_pv -= pv;
+            m_pv  = pv;
             if( m_pv  > 0){
                 return true;
             }else{
@@ -136,11 +154,14 @@
                 std::cin >> attaque;
                 if(attaque == "t"){
                     for(Creature* creature : m_LCreature){
-                        if(creature->getDegagee()){
+                        if(creature->getDegagee() && !creature->aLaCapacite(Capacite::DEFENSEUR)){
                             creature->setAttaque(true);
-                            creature->setDegagee(false);
+                            if(!creature->aLaCapacite(Capacite::VIGILANCE)){
+                                creature->setDegagee(false);
+                            }
                         }
                     }
+                    setAAttaque(true);
                     choix = false;
                     return true;
 
@@ -152,7 +173,6 @@
                     int carte;
                     while(choix){
                         std::cout << m_nom << " veuillez choisir avec qui vous voulez attaquer. " << std::endl;
-                        std::cin >> carte;
                         while (!(std::cin >> carte)){
                             std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
                             std::cin.clear();
@@ -161,9 +181,14 @@
                         }
                         
                         if(carte > 0 && carte <= (int)m_LCreature.size()){
-                            if(m_LCreature.at(carte-1)->getDegagee()){
-                                m_LCreature.at(carte-1)->setDegagee(false);
+                            if(m_LCreature.at(carte-1)->getDegagee() && !m_LCreature.at(carte-1)->aLaCapacite(Capacite::DEFENSEUR)){
+                                if(!m_LCreature.at(carte-1)->aLaCapacite(Capacite::VIGILANCE)){
+                                    m_LCreature.at(carte-1)->setDegagee(false);
+                                }
                                 m_LCreature.at(carte-1)->setAttaque(true);
+                                setAAttaque(true);
+                            }else{
+                                std::cout << "Cette creature ne peut pas attaquer !" << std::endl;
                             }
                         }else{
                             std::cout << "Erreur la carte n'est pas valable ! " << std::endl;
@@ -204,21 +229,77 @@
                         std::cout << "Sur qui voulez-vous defendre ? " << std::endl;
                     }
                     if(surQui > 0 && surQui <= (int)joueur2->getLCreature().size()){
-                        if (joueur2->getLCreature().at(surQui-1)->getAttaque()){
+                        if(joueur2->getLCreature().at(surQui-1)->getAttaque() && joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::MENACE)){
+                            int nbrCreatureDispo = 0;
+                            for(Creature* creature : m_LCreature){
+                                if(creature->getDegagee()){
+                                    nbrCreatureDispo++;
+                                }
+                            }
+                            if(nbrCreatureDispo >= 2){
+                                std::cout << "Cette creature a menace vous devez la defendre avec au moins 2 cartes ! " << std::endl;
+                                bool continuer = true;
+                                while(joueur2->getLCreature().at(surQui-1)->getEstDefenduPar().size() < 2 && continuer == true){
+                                    std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
+                                    int avecQui;
+                                    do{
+                                        
+                                        while (!(std::cin >> avecQui)){
+                                            std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                                            std::cin.clear();
+                                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                                            std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
+                                        }
+                                    }while(avecQui <= 0 || avecQui > m_LCreature.size());
+
+                                    if( m_LCreature.at(avecQui-1)->getDegagee()){
+                                        if(joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::VOL) && (!m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::VOL) && !m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::PORTEE))){
+                                            std::cout << "Votre creature n'a pas VOL ou PORTEE !" << std::endl;
+                                        } else{
+                                            joueur2->addDefenseur(surQui-1, m_LCreature.at(avecQui-1));
+                                            m_LCreature.at(avecQui-1)->setDegagee(false);
+                                            
+                                        }
+                                    }else{
+                                        std::cout << "Cette carte est engagee !" << std::endl;
+                                    }
+                                    if(joueur2->getLCreature().at(surQui-1)->getEstDefenduPar().size() > 2){
+                                        std::string c;
+                                        do{
+                                            std::cout << m_nom << " voulez-vous continuer à placer des defenseurs sur " << joueur2->getLCreature().at(surQui-1)->getNom() << " ? ('o' oui, 'n' non)" << std::endl;
+                                            std::cin >> c;
+                                            if (c == "n"){ continuer = false;}
+                                            else if  (c == "o"){ continuer = true;}
+                                        }while (c != "n" && c != "o");
+                                    }
+                                }
+                            }else{
+                                std::cout << "Vous n'avez pas assez de creatures disponibles pour defendre sur "<< joueur2->getLCreature().at(surQui-1)->getNom() << " !" << std::endl;
+                            }
+                        }else if (joueur2->getLCreature().at(surQui-1)->getAttaque() && !joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::IMBLOCABLE)){
                                 int avecQui;
                                 std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
-                                while (!(std::cin >> avecQui)){
-                                    std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
-                                    std::cin.clear();
-                                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                                    std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
-                                }
+                                do{
+                                    while (!(std::cin >> avecQui)){
+                                        std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                                        std::cin.clear();
+                                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                                        std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
+                                    }
+                                }while(avecQui <= 0 || avecQui > m_LCreature.size());
+                                
                                 if( m_LCreature.at(avecQui-1)->getDegagee()){
-                                    joueur2->addDefenseur(surQui-1, m_LCreature.at(avecQui-1));
-                                    m_LCreature.at(avecQui-1)->setDegagee(false);
+                                    if(joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::VOL) && (!m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::VOL) && !m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::PORTEE))){
+                                        std::cout << "Votre creature n'a pas VOL ou PORTEE !" << std::endl;
+                                    } else{
+                                        joueur2->addDefenseur(surQui-1, m_LCreature.at(avecQui-1));
+                                        m_LCreature.at(avecQui-1)->setDegagee(false);
+                                    }
                                 }else{
                                     std::cout << "Cette carte est engagee !" << std::endl;
                                 }
+                        }else if (joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::IMBLOCABLE)){
+                            std::cout << "Cette carte ne peut pas etre bloquee ! " << std::endl;
                         }else{
                             std::cout << "Cette carte n'attaque pas !" << std::endl;
                         }
@@ -362,7 +443,9 @@
                 majCptTerrainPrets();
                 m_LCreature.push_back(creature);
                 std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;
-                creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
+                if(!creature->aLaCapacite(Capacite::HATE)){
+                    creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
+                }
                 m_main.erase(m_main.begin() + indexCarte);
                 Affiche::afficheJeu(enJeu);
             }

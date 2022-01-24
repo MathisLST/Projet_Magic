@@ -54,6 +54,7 @@ class Creature : public Carte {
         void swap(int pos1, int pos2);
         std::vector<int> getCptCoutSpec();
         int getCoutTotal();
+        bool aLaCapacite(Capacite::capaciteStatique capacite);
 };
 
 #endif

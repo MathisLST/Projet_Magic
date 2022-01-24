@@ -110,3 +110,12 @@ int Creature::getCoutTotal(){
 std::vector <Terrain::land> Creature::getCoutSpecifique(){
     return m_coutSpecifique;
 }
+
+bool Creature::aLaCapacite(Capacite::capaciteStatique capacite){
+    for(Capacite::capaciteStatique capa : m_capacites){
+        if(capa == capacite){
+            return true;
+        }  
+    }
+    return false;
+}
