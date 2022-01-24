@@ -28,21 +28,26 @@ void Affiche::afficheJeu(EnJeu* jeu){
     afficheBibliotheque(jeu->getJoueur2());
     std::cout << "\nPV : \e[32m" << jeu->getJoueur2()->getPV() << "\e[0m \n" << jeu->getJoueur2()->getNom() ;
     std::cout << "\n" << std::endl;
+}
 
-
+void Affiche::afficheCarte(Carte* carte, int pos, Joueur* joueur){
+    if(carte->getCreature()){
+        Creature* creature = dynamic_cast<Creature*>(carte) ;
+        std::cout << " | " << pos << "- " << getColorDegagee(creature) << creature->getNom() << "\e[0m" <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creature->getCptCoutSpec()) << ")" << getColorAttaque(creature, joueur);
+    }else{
+        Terrain* terrain = dynamic_cast<Terrain*>(carte) ;
+        if (pos == -1){
+            std::cout << " | " << getColorDegagee(terrain) << terrain->landToString(terrain->getLandIndex()) << "\e[0m";
+        }else{
+            std::cout << " | " << pos << "- " << getColorDegagee(terrain) << terrain->landToString(terrain->getLandIndex()) << "\e[0m";
+        }
+    }
 }
 
 void Affiche::afficheMain(Joueur* joueur){
     int i = 1;
      for(Carte* carte : joueur->getMain()){
-         if(carte->getCreature()){
-            Creature* creature = dynamic_cast<Creature*>(carte) ;
-            std::cout << " | " << i << "- " << creature->getNom() << "\e[0m" <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creature->getCptCoutSpec()) << ")";
-            
-         }else{
-             Terrain* terrain = dynamic_cast<Terrain*>(carte) ;
-             std::cout << " | " << i << "- " << terrain->landToString(terrain->getLandIndex()) << "\e[0m";
-         }
+         afficheCarte(carte, i);
          i++;
      } 
  }
@@ -68,21 +73,21 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
  void Affiche::afficheCombat(EnJeu* enJeu){
     int c1 = 1;
      for(Creature* creaturesJ1 : enJeu->getJoueur1()->getLCreature()){
-            std::cout << " | " << c1 << "- " << getColorDegagee(creaturesJ1) << creaturesJ1->getNom()  << "(" << creaturesJ1->getForce() << "," << creaturesJ1->getEndurance() << ")" << "(" << creaturesJ1->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creaturesJ1->getCptCoutSpec()) << ")" << Affiche::getColorAttaque(creaturesJ1, enJeu->getJoueur2());
+            afficheCarte(creaturesJ1, c1, enJeu->getJoueur2());
             c1++;
      }
       for(Terrain* terrainsJ1 : enJeu->getJoueur1()->getLTerrain()){
-            std::cout << " | " << getColorDegagee(terrainsJ1) << terrainsJ1->landToString(terrainsJ1->getLandIndex());
+            afficheCarte(terrainsJ1);
       }
 
       std::cout << "\n" << std::endl;
         int c2 = 1;
       for(Creature* creaturesJ2 : enJeu->getJoueur2()->getLCreature()){
-            std::cout << " | " << c2 << "- "   << getColorDegagee(creaturesJ2) << creaturesJ2->getNom() << "(" << creaturesJ2->getForce() << "," << creaturesJ2->getEndurance() << ")" << "(" << creaturesJ2->getCoutQuelconque()  << ","<< Affiche::afficheCoutSpe(creaturesJ2->getCptCoutSpec()) << ")" << Affiche::getColorAttaque(creaturesJ2, enJeu->getJoueur1());
+            afficheCarte(creaturesJ2, c2, enJeu->getJoueur1());            
             c2++;
                  }
       for(Terrain* terrainsJ2 : enJeu->getJoueur2()->getLTerrain()){
-            std::cout << " | " << getColorDegagee(terrainsJ2) << terrainsJ2->landToString(terrainsJ2->getLandIndex()) ;
+          afficheCarte(terrainsJ2);
       }
       std::cout << std::endl;
  }
