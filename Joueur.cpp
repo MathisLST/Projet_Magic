@@ -7,14 +7,14 @@
 
         Joueur::Joueur(){}
 
-        Joueur::Joueur (int pv, Deck* deck){
-            
+        Joueur::Joueur (int pv, std::string nom, Encyclopedie* encyclopedie){
+            m_nom = nom;
             m_pv = pv;
-            m_deck = deck;
+            m_deck = encyclopedie->choisirDeck(m_nom);
+            construireDeck();
             m_bibliotheque = new Bibliotheque(m_deck);
             std::vector<Carte*> main;
             m_main = main;
-            m_nom = "";
             m_cptTerrainPrets = std::vector<int> (5,0);
             m_totalTerrainsPrets = 0;
 
@@ -250,7 +250,7 @@
                                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                                             std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
                                         }
-                                    }while(avecQui <= 0 || avecQui > m_LCreature.size());
+                                    }while(avecQui <= 0 || avecQui > (int)m_LCreature.size());
 
                                     if( m_LCreature.at(avecQui-1)->getDegagee()){
                                         if(joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::VOL) && (!m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::VOL) && !m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::PORTEE))){
@@ -286,7 +286,7 @@
                                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                                         std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
                                     }
-                                }while(avecQui <= 0 || avecQui > m_LCreature.size());
+                                }while(avecQui <= 0 || avecQui > (int)m_LCreature.size());
                                 
                                 if( m_LCreature.at(avecQui-1)->getDegagee()){
                                     if(joueur2->getLCreature().at(surQui-1)->aLaCapacite(Capacite::VOL) && (!m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::VOL) && !m_LCreature.at(avecQui-1)->aLaCapacite(Capacite::PORTEE))){
@@ -385,83 +385,89 @@
             m_terrainPose = b;
         }
 
-        void Joueur::majCptTerrainPrets(){ // ajouter cette fonction a la fin de la phase de desengagement pour maj le cpt
-            std::vector<int> m_cptTerrainPrets(5,0); // voir si il ne faut pas faire un for pour mettre les valeurs a 0
-            m_totalTerrainsPrets = 0;
-            for(Terrain* terrain : m_LTerrain){
-                if(terrain->getDegagee()){
-                    m_cptTerrainPrets.at(terrain->getLandIndex()) += 1;
-                    m_totalTerrainsPrets +=1;
-                }
-
+    void Joueur::majCptTerrainPrets(){ // ajouter cette fonction a la fin de la phase de desengagement pour maj le cpt
+        std::vector<int> m_cptTerrainPrets(5,0); // voir si il ne faut pas faire un for pour mettre les valeurs a 0
+        m_totalTerrainsPrets = 0;
+        for(Terrain* terrain : m_LTerrain){
+            if(terrain->getDegagee()){
+                m_cptTerrainPrets.at(terrain->getLandIndex()) += 1;
+                m_totalTerrainsPrets +=1;
             }
+
         }
-        void Joueur::ajoutCreature(int indexCarte, EnJeu* enJeu){
-            Creature* creature = dynamic_cast<Creature*>(m_main.at(indexCarte));
-            if (creaturePosable(creature)){
-                int coutQuelcCopy = creature->getCoutQuelconque();
-                int coutSpecCopy = 0;
-                for(int i = 0; i < 5; i++){
-                    coutSpecCopy = creature->getCptCoutSpec().at(i);
-                    if(coutSpecCopy > 0){
-                        for(Terrain* terrain : m_LTerrain){
-                            if(terrain->getDegagee() && terrain->getLandIndex() == i && coutSpecCopy > 0){  // degagee = desengagee
-                                    terrain->setDegagee(false);
-                                    coutSpecCopy -= 1;
-                            }
+    }
+    void Joueur::ajoutCreature(int indexCarte, EnJeu* enJeu){
+        Creature* creature = dynamic_cast<Creature*>(m_main.at(indexCarte));
+        if (creaturePosable(creature)){
+            int coutQuelcCopy = creature->getCoutQuelconque();
+            int coutSpecCopy = 0;
+            for(int i = 0; i < 5; i++){
+                coutSpecCopy = creature->getCptCoutSpec().at(i);
+                if(coutSpecCopy > 0){
+                    for(Terrain* terrain : m_LTerrain){
+                        if(terrain->getDegagee() && terrain->getLandIndex() == i && coutSpecCopy > 0){  // degagee = desengagee
+                                terrain->setDegagee(false);
+                                coutSpecCopy -= 1;
                         }
                     }
                 }
-                while(coutQuelcCopy > 0){
-                    majCptTerrainPrets();
-                    Affiche::afficheJeu(enJeu);
-                    int terrainType = -1;
-                    std::cout << "Choisissez un terrain a engager (" << coutQuelcCopy << " restant(s) )" << std::endl;
-                    while(terrainType <= -1 || terrainType >= 5){
-                        std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
-                        while (!(std::cin >> terrainType)){
-                            std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                            std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
-                        }                        
-                    }
-                    if(m_cptTerrainPrets.at(terrainType) > 0)
-                    {
-                        for(Terrain* terrain : m_LTerrain){
-                            if(terrain->getDegagee() && terrain->getLandIndex() == terrainType){  // degagee = desengagee
-                                    terrain->setDegagee(false);
-                                    coutQuelcCopy -= 1;
-                                    break;
-                            }
-                        }
-                    }
-                    else{
-                        std::cout << "Vous ne pouvez pas engager de " << Terrain::landToString(terrainType) <<"." << std::endl;
-                    }
-                }
+            }
+            while(coutQuelcCopy > 0){
                 majCptTerrainPrets();
-                m_LCreature.push_back(creature);
-                std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;
-                if(!creature->aLaCapacite(Capacite::HATE)){
-                    creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
-                }
-                m_main.erase(m_main.begin() + indexCarte);
                 Affiche::afficheJeu(enJeu);
-            }
-            else{
-                std::cout << "Cette creature ne peut pas etre posee !" << std::endl;
-            }
-        }
-
-        bool Joueur::creaturePosable(Creature* creature){
-            if(m_totalTerrainsPrets < creature->getCoutTotal())
-                return false;
-            else{
-                for(int i = 0; i < 5; i++){
-                    if(creature->getCptCoutSpec().at(i) > m_cptTerrainPrets.at(i))
-                        return false;
+                int terrainType = -1;
+                std::cout << "Choisissez un terrain a engager (" << coutQuelcCopy << " restant(s) )" << std::endl;
+                while(terrainType <= -1 || terrainType >= 5){
+                    std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
+                    while (!(std::cin >> terrainType)){
+                        std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        std::cout << "Entrez le chiffre correspondant :  0= PLAINE, 1= ILE, 2= MARAIS, 3= MONTAGNE, 4= FORET" << std::endl;
+                    }                        
                 }
-                return true;
+                if(m_cptTerrainPrets.at(terrainType) > 0)
+                {
+                    for(Terrain* terrain : m_LTerrain){
+                        if(terrain->getDegagee() && terrain->getLandIndex() == terrainType){  // degagee = desengagee
+                                terrain->setDegagee(false);
+                                coutQuelcCopy -= 1;
+                                break;
+                        }
+                    }
+                }
+                else{
+                    std::cout << "Vous ne pouvez pas engager de " << Terrain::landToString(terrainType) <<"." << std::endl;
+                }
             }
+            majCptTerrainPrets();
+            m_LCreature.push_back(creature);
+            std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;
+            if(!creature->aLaCapacite(Capacite::HATE)){
+                creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
+            }
+            m_main.erase(m_main.begin() + indexCarte);
+            Affiche::afficheJeu(enJeu);
         }
+        else{
+            std::cout << "Cette creature ne peut pas etre posee !" << std::endl;
+        }
+    }
+
+    bool Joueur::creaturePosable(Creature* creature){
+        if(m_totalTerrainsPrets < creature->getCoutTotal())
+            return false;
+        else{
+            for(int i = 0; i < 5; i++){
+                if(creature->getCptCoutSpec().at(i) > m_cptTerrainPrets.at(i))
+                    return false;
+            }
+            return true;
+        }
+    }
+
+    void Joueur::construireDeck(){
+    for(int id : m_deck->getDeckIndex()){
+        m_deck->ajouterCarte(id);
+    }
+}
