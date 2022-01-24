@@ -15,7 +15,7 @@ const char* Capacite::capaToString(capaciteStatique capacite, bool abregee) thro
     switch (capacite)
     {
         case Capacite::VOL: if (!abregee) {return "VOL" ;} else return "Vo";
-        case Capacite::PORTEE: if (!abregee) return "PORTEE"; else return "P";
+        case Capacite::PORTEE: if (!abregee) return "PORTEE"; else return "Po";
         case Capacite::VIGILANCE: if (!abregee) return "VIGILANCE"; else return "Vi";
         case Capacite::CONTACTMORTEL: if (!abregee) return "CONTACTMORTEL"; else return "CM";
         case Capacite::DEFENSEUR: if (!abregee) return "DEFENSEUR"; else return "D"; 
@@ -23,6 +23,7 @@ const char* Capacite::capaToString(capaciteStatique capacite, bool abregee) thro
         case Capacite::IMBLOCABLE: if (!abregee) return "IMBLOCABLE"; else return "I"; 
         case Capacite::LIENDEVIE: if (!abregee) return "LIENDEVIE"; else return "LV";
         case Capacite::MENACE: if (!abregee) return "MENACE"; else return "M";
+        case Capacite::PIETINEMENT: if (!abregee) return "PIETINEMENT"; else return "Pi";
         default: throw std::invalid_argument("Unimplemented item");
     }
 }
