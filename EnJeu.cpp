@@ -37,6 +37,7 @@ bool EnJeu::tirerAuSort(){
 bool EnJeu::phasePioche(Joueur* j1, Joueur* j2){
     if (!j1->piocher(1)){
         m_gagnant = j2->getNom();
+        std::cout << j1->getNom() << " n'a plus de carte dans sa bibliotheque !" << std::endl;
         return false;
     }else{
         return true;
@@ -134,6 +135,7 @@ bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
 
                 }else{
                     m_gagnant = j1->getNom();
+                    std::cout << j2->getNom() << " n'a plus de PV !" << std::endl;
                     return false;
                 }
             }else{
@@ -238,13 +240,13 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
             if (!tour(joueur1, joueur2)){
                 break;
             }
-
+            m_t1 = false;
             Affiche::afficheJeu(this);
 
             if(!tour(joueur2,joueur1)){
                 break;
             }
-            m_t1 = false;
+           
         }
         
     }else{
@@ -253,18 +255,18 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
             if (!tour(joueur2, joueur1)){
                 break;
             }
-
+            m_t1 = false;
             Affiche::afficheJeu(this);
 
             if(!tour(joueur1,joueur2)){
                 break;
             }
-            m_t1 = false;
+            
         }
         
     }
     
 
-    std::cout << m_gagnant << " à gagné !! gg ! " << std::endl;
+    std::cout << m_gagnant << " a gagné !! gg ! " << std::endl;
     
 }
