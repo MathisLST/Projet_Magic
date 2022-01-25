@@ -20,6 +20,7 @@ class Encyclopedie{
         std::vector<Carte*> getEncyclopedie();
         Carte* getCarte(int i) throw(); // voir warning avec throw : case ?
         Deck* choisirDeck(std::string nomJoueur);
+        void afficherDecks();
 
 
 };

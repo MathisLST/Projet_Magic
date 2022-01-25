@@ -200,23 +200,29 @@ Carte* Encyclopedie::getCarte(int i) throw(){
 }
 
 Deck* Encyclopedie::choisirDeck(std::string nomJoueur){
-    // gerer affichage decks dans la console au moment de chosir
     bool deckValide = false;
     int indexDeck;
     while(!deckValide){
         std::cout << nomJoueur << " veuillez choisir un deck. 1-" << m_decks.size() << std::endl;
+        afficherDecks();
         while(!(std::cin >> indexDeck)){
             std::cout << "Numero de deck invalide, veuillez rentrer un entier !" << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Veuillez choisir un deck. 1-" << m_decks.size() << std::endl;
+            afficherDecks();
         }
         if(indexDeck >= 1 && indexDeck <= (int)m_decks.size()){
             deckValide = true;
         }
     }
     return m_decks.at(indexDeck-1);
+}
 
-
-
+void Encyclopedie::afficherDecks(){
+    int i = 1;
+    for(Deck* deck : m_decks){
+        std::cout << i << "- " << deck->getNom() << std::endl;
+        i++;
+    }
 }
