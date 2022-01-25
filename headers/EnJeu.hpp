@@ -14,10 +14,8 @@ class EnJeu{
     private :
         Joueur* m_joueur1;
         Joueur* m_joueur2;
-        Joueur* m_j1;
-        Joueur* m_j2;
         bool m_partieFinie;
-        bool m_t1;
+        bool m_tour1;
         std::string m_gagnant;
 
     public :
@@ -26,14 +24,6 @@ class EnJeu{
 
         Joueur* getJoueur1();
         Joueur* getJoueur2();
-        Joueur* getJ1();
-        Joueur* getJ2();
-    
-
-        void setLTerrainJ1();
-        void setLTerrainJ2();
-        void setLCreatureJ1();
-        void setLCreatureJ2();
 
         bool tirerAuSort();   
         bool phasePioche(Joueur* j1, Joueur* j2);

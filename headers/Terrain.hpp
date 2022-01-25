@@ -15,23 +15,21 @@ class Terrain : public Carte {
             MONTAGNE,
             FORET
         };
-        
-        
+
         Terrain(land landType);
         virtual ~Terrain();
+        
         bool getDegagee();
-       
-        void setDegagee(bool estDegagee);
         bool getCreature();
-
         land getLand();
         int getLandIndex();
+       
+        void setDegagee(bool estDegagee);
+
         static const char* landToString(int l, bool abregee = false);
         static const char* landToColor(Terrain::land land);
 
     private :
-        
-
         land m_land;
 
     

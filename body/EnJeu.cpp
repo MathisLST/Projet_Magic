@@ -6,10 +6,8 @@
 EnJeu::EnJeu(Joueur* joueur1, Joueur* joueur2){
     m_joueur1 = joueur1;
     m_joueur2 = joueur2;
-    m_j1 = new Joueur();
-    m_j2 = new Joueur();
     m_partieFinie = false;
-    m_t1 = true;
+    m_tour1 = true;
     m_gagnant = "";
 }
 
@@ -20,12 +18,6 @@ Joueur* EnJeu::getJoueur1(){
 }
 Joueur* EnJeu::getJoueur2(){
     return m_joueur2;
-}
-Joueur* EnJeu::getJ1(){
-    return m_j1;
-}
-Joueur* EnJeu::getJ2(){
-    return m_j2;
 }
 
 bool EnJeu::tirerAuSort(){
@@ -198,7 +190,7 @@ void EnJeu::phaseFinTour(Joueur* j1, Joueur* j2){
 
 bool EnJeu::tour(Joueur* j1, Joueur* j2){
    
-    if(!m_t1){
+    if(!m_tour1){
         if(!phasePioche(j1, j2)){
             return false;
         }
@@ -239,7 +231,7 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
             if (!tour(joueur1, joueur2)){
                 break;
             }
-            m_t1 = false;
+            m_tour1 = false;
             Affiche::afficheJeu(this);
 
             if(!tour(joueur2,joueur1)){
@@ -254,7 +246,7 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
             if (!tour(joueur2, joueur1)){
                 break;
             }
-            m_t1 = false;
+            m_tour1 = false;
             Affiche::afficheJeu(this);
 
             if(!tour(joueur1,joueur2)){

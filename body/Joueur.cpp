@@ -100,6 +100,16 @@ void Joueur::setNom(std::string nom)
     m_nom = nom;
 }
 
+bool Joueur::getTerrainPose()
+{
+    return m_terrainPose;
+}
+
+void Joueur::setTerrainPose(bool b)
+{
+    m_terrainPose = b;
+}
+
 void Joueur::addDefenseur(int pos, Creature *creature)
 {
     m_LCreature.at(pos)->addDefenseur(creature);
@@ -497,15 +507,7 @@ void Joueur::ajoutTerrain(int indexCarte, EnJeu *enJeu)
     std::cout << "Un terrain " << Terrain::landToString(terrain->getLandIndex()) << " a ete pose." << std::endl;
 }
 
-bool Joueur::getTerrainPose()
-{
-    return m_terrainPose;
-}
 
-void Joueur::setTerrainPose(bool b)
-{
-    m_terrainPose = b;
-}
 
 void Joueur::majCptTerrainPrets()
 {                                       

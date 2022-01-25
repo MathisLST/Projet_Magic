@@ -30,6 +30,7 @@ class Joueur {
         Joueur();
         Joueur (int pv, std::string nom, Encyclopedie* encyclopedie);
         ~Joueur();
+
         int getPV();
         Deck* getDeck();
         std::vector<Carte*> getCimetiere();
@@ -38,9 +39,17 @@ class Joueur {
         std::vector<Creature*> getLCreature();
         std::vector<Terrain*> getLTerrain();
         std::string getNom();
+        bool getTerrainPose();
+        std::vector<int> getCptTerrainPrets();
+        bool getCreatureReady();
+        bool getAAttaque();
+
         bool setPv(int pv);
         void setNom(std::string nom);
+        void setTerrainPose(bool b);
+        void setAAttaque(bool aAttaque);
         void addDefenseur(int pos, Creature* creature);
+
         bool piocher(int nbrCartes);
         void melanger();
         void desengager();
@@ -51,16 +60,10 @@ class Joueur {
         void choixDefenseur(Joueur *joueur2, int surQui);
         void choisirAttaque(Joueur* j2, EnJeu* enJeu);
         void mortAuCombat(Creature* creature);
-        void ajoutTerrain(int indexCarte, EnJeu* enJeu);
-        bool getTerrainPose();
-        void setTerrainPose(bool b);
+        void ajoutTerrain(int indexCarte, EnJeu* enJeu);   
         void ajoutCreature(int indexCarte, EnJeu* enJeu);
         bool creaturePosable(Creature* creature);
-        std::vector<int> getCptTerrainPrets();
         void majCptTerrainPrets();
-        bool getCreatureReady();
-        bool getAAttaque();
-        void setAAttaque(bool aAttaque);
         void construireDeck();
         bool peutDefendre(Creature* creatureA, Creature* creatureD);
 

@@ -45,7 +45,6 @@ class Creature : public Carte {
         Creature(std::string nom, std::string type, int const basedEndurance ,int const basedForce, int coutQuelconque, std::vector <Terrain::land> coutSpec, std::vector <Capacite::capaciteStatique> capacites);
         virtual ~Creature();
 
-        // get
         std::string getNom();
         std::string getType();
         int getBasedEndurance();
@@ -63,7 +62,6 @@ class Creature : public Carte {
         int getCoutTotal();
         std::vector<std::string> getCouleur();
         
-        // set
         void setDegagee(bool estDegagee);
         void setForce(int force);
         void setEndurance(int endurance);
