@@ -16,6 +16,7 @@ Creature::Creature(std::string nom, std::string type, int const basedEndurance ,
     m_creature = true;
     m_attaque = false;
     m_coutSpecifique = coutSpec;
+    setCouleur();
 
     m_coutTotal = m_coutQuelconque;
     m_cptCoutSpec = std::vector<int>(5, 0);
@@ -118,4 +119,22 @@ bool Creature::aLaCapacite(Capacite::capaciteStatique capacite){
         }  
     }
     return false;
+}
+
+std::vector<std::string> Creature::getCouleur(){
+    return m_couleur;
+}
+
+void Creature::setCouleur(){
+    for(Terrain::land terrain : m_coutSpecifique){
+        std::string couleur = Terrain::landToColor(terrain);
+        for(int i = 0; i < (int)m_couleur.size(); i++){
+            if(couleur == m_couleur.at(i))
+                break;
+            else{
+                if(i == (int)m_couleur.size() -1)
+                    m_couleur.push_back(couleur);
+            }
+        }
+    }
 }

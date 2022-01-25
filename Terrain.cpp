@@ -46,3 +46,15 @@ const char* Terrain::landToString(int i, bool abregee) throw(){
         default: throw std::invalid_argument("Unimplemented item");
     }
 }
+
+const char* Terrain::landToColor(Terrain::land land) throw(){
+    switch (land)
+    {
+        case Terrain::PLAINE: return "BLANC";
+        case Terrain::ILE: return "BLEU";
+        case Terrain::MARAIS: return "NOIR";
+        case Terrain::MONTAGNE: return "ROUGE";
+        case Terrain::FORET: return "VERT";
+        default: throw std::invalid_argument("Unimplemented item");
+    }
+}

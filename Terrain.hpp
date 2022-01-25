@@ -27,6 +27,7 @@ class Terrain : public Carte {
         land getLand();
         int getLandIndex();
         static const char* landToString(int l, bool abregee = false) throw();
+        static const char* landToColor(Terrain::land land) throw();
 
     private :
         

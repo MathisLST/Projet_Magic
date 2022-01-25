@@ -26,6 +26,8 @@ class Creature : public Carte {
         std::vector<int> m_cptCoutSpec;
         int m_coutTotal;
         std::vector <Terrain::land> m_coutSpecifique;
+        std::vector<std::string> m_couleur;
+        void setCouleur();
 
 	
     public :
@@ -55,6 +57,7 @@ class Creature : public Carte {
         std::vector<int> getCptCoutSpec();
         int getCoutTotal();
         bool aLaCapacite(Capacite::capaciteStatique capacite);
+        std::vector<std::string> getCouleur();
 };
 
 #endif
