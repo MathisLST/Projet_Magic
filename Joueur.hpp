@@ -28,7 +28,7 @@ class Joueur {
         bool m_aAttaque;
     public :
         Joueur();
-        Joueur (int pv, Deck* deck);
+        Joueur (int pv, std::string nom, Encyclopedie* encyclopedie);
         ~Joueur();
         int getPV();
         Deck* getDeck();
@@ -60,6 +60,7 @@ class Joueur {
         bool getCreatureReady();
         bool getAAttaque();
         void setAAttaque(bool aAttaque);
+        void construireDeck();
 
     
 

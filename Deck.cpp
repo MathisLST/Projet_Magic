@@ -11,7 +11,6 @@ Deck::Deck(std::string nom,std::vector<int> deck, Encyclopedie* encyclopedie){
     m_nom = nom;
     m_deckIndex = deck;
     m_encyclopedie = encyclopedie;
-    construireDeck();
 }
 /*
 Deck::Deck (std::string nom, std::vector<Carte*> deck, Encyclopedie* encyclopedie){ // ici encyclopedie pas tres utile en arguments
@@ -39,10 +38,13 @@ std::string Deck::getNom(){
     return m_nom;
 }
 
-void Deck::construireDeck(){
-    for(int id : m_deckIndex){
-        if(id > -1 && id < (int)m_encyclopedie->getEncyclopedie().size()){
-            Carte* carteref = m_encyclopedie->getCarte(id);
+Encyclopedie* Deck::getEncyclopedie(){
+    return m_encyclopedie;
+}
+
+void Deck::ajouterCarte(int idCarte){
+    if(idCarte > -1 && idCarte < (int)m_encyclopedie->getEncyclopedie().size()){
+            Carte* carteref = m_encyclopedie->getCarte(idCarte);
             if(carteref->getCreature() == true){
                 Creature* creature = dynamic_cast<Creature*>(carteref);
                 m_deck.push_back(new Creature(creature->getNom(), creature->getType(), creature->getBasedEndurance(), 
@@ -52,9 +54,8 @@ void Deck::construireDeck(){
                 Terrain* terrain = dynamic_cast<Terrain*>(carteref);
                 m_deck.push_back(new Terrain(terrain->getLand()));
             }
-        }
-        else
-            std::cout << "La carte n°" << id << " n'existe pas dans l'encyclopedie et n'a pas pu etre ajoutee" << std::endl; 
     }
+    else
+        std::cout << "La carte n°" << idCarte << " n'existe pas dans l'encyclopedie et n'a pas pu etre ajoutee" << std::endl; 
 }
 

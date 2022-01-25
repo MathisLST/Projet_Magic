@@ -22,8 +22,9 @@ class Deck {
         std::vector<int> getDeckIndex();
         std::vector<Carte*> getDeck();
         std::string getNom();
+        Encyclopedie* getEncyclopedie();
 
-        void construireDeck();
+        void ajouterCarte(int idCarte);
 
 };
 

@@ -25,7 +25,7 @@ int main(){
     
     system("clear");
 
-    Encyclopedie encyclopedie = Encyclopedie();
+    Encyclopedie* encyclopedie = new Encyclopedie();
     
 
     /*
@@ -51,19 +51,19 @@ int main(){
 
     */
     
-    Joueur* j1 = new Joueur(20, encyclopedie.choisirDeck());
-    Joueur* j2 = new Joueur(20, encyclopedie.choisirDeck());
+    
 
     std::string nomJ1;
     std::string nomJ2;
 
     std::cout << "Joueur 1 veuillez choisir un Pseudo." << std::endl;
     std::cin >> nomJ1;
-    j1->setNom(nomJ1);
 
     std::cout << "Joueur 2 veuillez choisir un Pseudo." << std::endl;
     std::cin >> nomJ2;
-    j2->setNom(nomJ2);
+
+    Joueur* j1 = new Joueur(20, nomJ2, encyclopedie);
+    Joueur* j2 = new Joueur(20, nomJ1, encyclopedie);
 
     EnJeu* enJeu = new EnJeu(j1, j2);
 
