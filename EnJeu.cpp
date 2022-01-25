@@ -248,9 +248,6 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
                 break;
             }
             m_t1 = false;
-
-            std::cout << "FIN DE TOUR" << std::endl;
-            
         }
         
     }else{
@@ -266,8 +263,6 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
                 break;
             }
             m_t1 = false;
-
-            std::cout << "FIN DE TOUR" << std::endl;
         }
         
     }

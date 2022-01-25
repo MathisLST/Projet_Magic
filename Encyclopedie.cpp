@@ -182,6 +182,9 @@ Encyclopedie::~Encyclopedie(){
     for(Carte* carte : m_encyclopedie){
         delete carte;
     }
+    for(Deck* deck : m_decks){
+        delete deck;
+    }
 }
 
 std::vector<Carte*> Encyclopedie::getEncyclopedie(){

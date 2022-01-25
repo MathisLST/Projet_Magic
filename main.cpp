@@ -62,8 +62,8 @@ int main(){
     std::cout << "Joueur 2 veuillez choisir un Pseudo." << std::endl;
     std::cin >> nomJ2;
 
-    Joueur* j1 = new Joueur(20, nomJ2, encyclopedie);
-    Joueur* j2 = new Joueur(20, nomJ1, encyclopedie);
+    Joueur* j1 = new Joueur(20, nomJ1, encyclopedie);
+    Joueur* j2 = new Joueur(20, nomJ2, encyclopedie);
 
     EnJeu* enJeu = new EnJeu(j1, j2);
 

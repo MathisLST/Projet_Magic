@@ -69,7 +69,7 @@ std::string Affiche::afficheCapacite(Creature* creature){
     if ((int)creature->getCapacites().size() > 0){
          std::string str = " ( ";
         for(Capacite::capaciteStatique capa : creature->getCapacites()){
-            str = str + Capacite::capaToString(capa,true) + " "; 
+            str = str + Capacite::capaToString(capa,false) + " "; 
         }
         str += ")";
         return str;

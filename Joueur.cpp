@@ -62,7 +62,7 @@
 
         bool Joueur::getCreatureReady(){
             for (Creature* creature : m_LCreature){
-                if(creature->getDegagee() ){
+                if(creature->getDegagee() && !creature->aLaCapacite(Capacite::DEFENSEUR)){
                     return true;
                 }
             }
