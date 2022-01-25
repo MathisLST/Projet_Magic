@@ -138,3 +138,10 @@ void Creature::setCouleur(){
         }
     }
 }
+
+bool Creature::aLaCouleur(std::string couleur){
+    for (std::string coul : m_couleur){
+        if ( coul == couleur) return true;
+    }
+    return false;
+}

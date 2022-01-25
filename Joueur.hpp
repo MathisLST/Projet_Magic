@@ -48,6 +48,7 @@ class Joueur {
         void remonterStatsCreatures();
         bool attaque(EnJeu* enJeu);
         void defense(Joueur* joueur, EnJeu* enJeu);
+        void choixDefenseur(Joueur *joueur2, int surQui);
         void choisirAttaque(Joueur* j2, EnJeu* enJeu);
         void mortAuCombat(Creature* creature);
         void ajoutTerrain(int indexCarte, EnJeu* enJeu);
@@ -61,6 +62,7 @@ class Joueur {
         bool getAAttaque();
         void setAAttaque(bool aAttaque);
         void construireDeck();
+        bool peutDefendre(Creature* creatureA, Creature* creatureD);
 
     
 

@@ -140,10 +140,10 @@ bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
 
                 for(Creature* creatureD : creature->getEstDefenduPar()){
                     if ((creatureD->aLaCapacite(Capacite::CONTACTMORTEL) && creatureD->getForce() > 0 ) && ( creature->aLaCapacite(Capacite::CONTACTMORTEL) && creature->getForce() > 0)){
-                        creatureD->setEndurance(- (creature->getForce() - 1) );
+                        creatureD->setEndurance(- (creature->getForce() - 1));
                         creature->setEndurance(- (creatureD->getForce() - 1));
                     }else if(creatureD->aLaCapacite(Capacite::CONTACTMORTEL) && creatureD->getForce() > 0){
-                        creatureD->setEndurance(creature->getEndurance() - creature->getForce());
+                        creatureD->setEndurance(creatureD->getEndurance() - creature->getForce());
                         creature->setEndurance(- (creatureD->getForce() - 1));
                     }else if (creature->aLaCapacite(Capacite::CONTACTMORTEL) && creature->getForce() > 0){
                         creatureD->setEndurance(- (creature->getForce() - 1));

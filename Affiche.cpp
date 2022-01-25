@@ -105,7 +105,7 @@ void Affiche::afficheBibliotheque(Joueur* joueur){
             afficheCarte(terrainsJ1);
       }
 
-      std::cout << "\n" << std::endl;
+      std::cout << "\n\n\n" << std::endl;
         int c2 = 1;
       for(Creature* creaturesJ2 : enJeu->getJoueur2()->getLCreature()){
             afficheCarte(creaturesJ2, c2, enJeu->getJoueur1());            
