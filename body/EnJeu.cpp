@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <random>
-#include "EnJeu.hpp"
+#include "../headers/EnJeu.hpp"
 
 EnJeu::EnJeu(Joueur* joueur1, Joueur* joueur2){
     m_joueur1 = joueur1;

@@ -1,7 +1,7 @@
-#include "Creature.hpp"
-#include "Deck.hpp"
-#include "Joueur.hpp"
-#include "Affiche.hpp"
+#include "../headers/Creature.hpp"
+#include "../headers/Deck.hpp"
+#include "../headers/Joueur.hpp"
+#include "../headers/Affiche.hpp"
 
 
 int main(){

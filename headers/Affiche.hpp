@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "EnJeu.hpp"
+#include "../headers/EnJeu.hpp"
 
 class EnJeu;
 class Joueur;

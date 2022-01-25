@@ -4,8 +4,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Carte.hpp"
-#include "Encyclopedie.hpp"
+#include "../headers/Carte.hpp"
+#include "../headers/Encyclopedie.hpp"
 
 class Encyclopedie;
 class Deck {

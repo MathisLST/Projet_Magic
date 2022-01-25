@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Joueur.hpp"
-#include "Affiche.hpp"
-#include "Capacite.hpp"
+#include "../headers/Joueur.hpp"
+#include "../headers/Affiche.hpp"
+#include "../headers/Capacite.hpp"
 
 
 

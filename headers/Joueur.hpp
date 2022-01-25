@@ -4,12 +4,12 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Deck.hpp"
-#include "Carte.hpp"
-#include "Bibliotheque.hpp"
-#include "Creature.hpp"
-#include "Terrain.hpp"
-#include "EnJeu.hpp"
+#include "../headers/Deck.hpp"
+#include "../headers/Carte.hpp"
+#include "../headers/Bibliotheque.hpp"
+#include "../headers/Creature.hpp"
+#include "../headers/Terrain.hpp"
+#include "../headers/EnJeu.hpp"
 
 class EnJeu;
 class Joueur {

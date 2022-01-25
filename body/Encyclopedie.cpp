@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Encyclopedie.hpp"
+#include "../headers/Encyclopedie.hpp"
 
 Encyclopedie::Encyclopedie(){
     //std::vector<Carte*> m_encyclopedie;

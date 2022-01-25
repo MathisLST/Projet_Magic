@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "Carte.hpp"
-#include "Deck.hpp"
+#include "../headers/Carte.hpp"
+#include "../headers/Deck.hpp"
 
 class Bibliotheque {
     private :
