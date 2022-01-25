@@ -33,7 +33,7 @@ class Capacite{
 
         capaciteStatique getCapaciteStatique();
 
-        const char* capaToString(capaciteStatique capacite, bool abregee) throw();
+        static const char* capaToString(capaciteStatique capacite, bool abregee) throw();
 
     private : 
         capaciteStatique m_capaciteStatique;

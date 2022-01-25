@@ -4,6 +4,7 @@
 #include <vector>
 #include "Joueur.hpp"
 #include "Affiche.hpp"
+#include "Capacite.hpp"
 
 
 
@@ -33,7 +34,7 @@ void Affiche::afficheJeu(EnJeu* jeu){
 void Affiche::afficheCarte(Carte* carte, int pos, Joueur* joueur){
     if(carte->getCreature()){
         Creature* creature = dynamic_cast<Creature*>(carte) ;
-        std::cout << " | " << pos << "- " << getColorDegagee(creature) << creature->getNom() << "\e[0m" <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << "(" << creature->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creature->getCptCoutSpec()) << ")" << getColorAttaque(creature, joueur);
+        std::cout << " | " << pos << "- " <<  getColorDegagee(creature) << "(" << creature->getCoutQuelconque()  << "," << Affiche::afficheCoutSpe(creature->getCptCoutSpec()) << ") " <<  creature->getNom() << "\e[0m" << afficheCapacite(creature) <<"(" << creature->getForce() << "," << creature->getEndurance() << ")" << getColorAttaque(creature, joueur);
     }else{
         Terrain* terrain = dynamic_cast<Terrain*>(carte) ;
         if (pos == -1){
@@ -57,11 +58,24 @@ std::string Affiche::afficheCoutSpe(std::vector<int> coutSpecifique){
     std::string coutSpe="";
     for(int cpt : coutSpecifique){
         for(int j = 0; j < cpt; j++ ){
-            coutSpe = coutSpe + Terrain::landToString(i,true) + " ";
+            coutSpe = coutSpe + " " + Terrain::landToString(i,true) ;
         }
         i++;
     }
     return coutSpe;
+}
+
+std::string Affiche::afficheCapacite(Creature* creature){
+    if ((int)creature->getCapacites().size() > 0){
+         std::string str = " ( ";
+        for(Capacite::capaciteStatique capa : creature->getCapacites()){
+            str = str + Capacite::capaToString(capa,true) + " "; 
+        }
+        str += ")";
+        return str;
+    }else{return " ";}
+
+    
 }
 
 void Affiche::afficheBibliotheque(Joueur* joueur){
