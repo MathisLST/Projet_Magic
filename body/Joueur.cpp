@@ -362,6 +362,7 @@ void Joueur::defense(Joueur *joueur2, EnJeu *enJeu)
                             while (joueur2->getLCreature().at(surQui - 1)->getEstDefenduPar().size() < 2 && continuer == true)
                             {
                                 choixDefenseur(joueur2, surQui);
+                                Affiche::afficheJeu(enJeu);
                                 if (joueur2->getLCreature().at(surQui - 1)->getEstDefenduPar().size() > 2)
                                 {
                                     std::string c;
@@ -389,6 +390,8 @@ void Joueur::defense(Joueur *joueur2, EnJeu *enJeu)
                     else if (joueur2->getLCreature().at(surQui - 1)->getAttaque() && !joueur2->getLCreature().at(surQui - 1)->aLaCapacite(Capacite::IMBLOCABLE))
                     {
                         choixDefenseur(joueur2, surQui);
+                        Affiche::afficheJeu(enJeu);
+
                     }
                     else if (joueur2->getLCreature().at(surQui - 1)->aLaCapacite(Capacite::IMBLOCABLE))
                     {
