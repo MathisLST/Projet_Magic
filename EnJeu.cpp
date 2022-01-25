@@ -231,9 +231,6 @@ void EnJeu::start(Joueur* joueur1, Joueur* joueur2){
     
     joueur1->piocher(7);
     joueur2->piocher(7);
-
-    std::cout << joueur1->getNom() << std::endl;
-    
     
     if (tirerAuSort()){
        while (1){

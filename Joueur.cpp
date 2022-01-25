@@ -9,7 +9,9 @@ Joueur::Joueur(int pv, std::string nom, Encyclopedie *encyclopedie)
 {
     m_nom = nom;
     m_pv = pv;
-    m_deck = encyclopedie->choisirDeck(m_nom);
+
+    Deck* deckref = encyclopedie->choisirDeck(m_nom);
+    m_deck = new Deck(deckref->getNom(), deckref->getDeckIndex(), encyclopedie);
     construireDeck();
     m_bibliotheque = new Bibliotheque(m_deck);
     std::vector<Carte *> main;

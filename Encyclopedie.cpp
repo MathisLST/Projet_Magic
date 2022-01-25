@@ -157,7 +157,9 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Gardien des spheres", "oiseau et sorcier", 2, 2, 0, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::ILE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
 
     // CARTES TEST /* 131 a ... */
-
+    m_encyclopedie.push_back(new Creature("Bowser", "Tortue", 2, 20, 0, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE})));
+    m_encyclopedie.push_back(new Creature("MaxLaMenace", "Humain", 10, 2, 0, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::MENACE})));
+    m_encyclopedie.push_back(new Creature("Eco+", "Humain", 2, 2, 0, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE})));
 
 
     // Preparation decks
@@ -168,7 +170,10 @@ Encyclopedie::Encyclopedie(){
     Deck* deckVert = new Deck("Deck Vert", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,98,99,99,103,104,105,107,109,109,110,111,115,115,116,117,117,118,119}), this);
     Deck* deckMulti = new Deck("Deck Multi", std::vector<int>({0,1,2,3,4,0,1,2,3,0,1,2,3,4,120,121,122,123,124,125,126,127,128,129,130,0,1,2,3,4}), this);
     Deck* deckToucher = new Deck("Deck Toucher", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,108,108,108,108,108,4,4,4,4,4,4,4,4,4,4,108,108,108}), this);
-    Deck* deckMenace = new Deck("Deck Menace", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,75,75,75,75,75,3,3,3,3,3,3,3,3,3,3,75,75,75}), this);
+    Deck* deckOneShot = new Deck("Deck OneShot", std::vector<int>({3,3,3,3,3,3,131,131,131,131,131,131,131,131,131,131}), this);
+    Deck* deckMenace = new Deck("Deck Menace", std::vector<int>({0,0,0,0,0,0,132,132,132,132,132,132,132,132,132,132}), this);
+    Deck* deckPasCher = new Deck("Deck PasCher", std::vector<int>({0,0,0,0,0,0,133,133,133,133,133,133,133,133,133,133}), this);
+    Deck* deckPasDeCarte = new Deck("Deck PasDeCarte", std::vector<int>({0,0,0,0,0,0,0}), this);
 
     m_decks.push_back(deckBlanc);
     m_decks.push_back(deckBleu);
@@ -177,7 +182,10 @@ Encyclopedie::Encyclopedie(){
     m_decks.push_back(deckVert);
     m_decks.push_back(deckMulti);
     m_decks.push_back(deckToucher);
+    m_decks.push_back(deckOneShot);
     m_decks.push_back(deckMenace);
+    m_decks.push_back(deckPasCher);
+    m_decks.push_back(deckPasDeCarte);
 }
 
 Encyclopedie::~Encyclopedie(){
@@ -193,7 +201,7 @@ std::vector<Carte*> Encyclopedie::getEncyclopedie(){
     return m_encyclopedie;
 }
 
-Carte* Encyclopedie::getCarte(int i) throw(){
+Carte* Encyclopedie::getCarte(int i){
     if(i > -1 && i < (int)m_encyclopedie.size())
         return m_encyclopedie.at(i);
     else

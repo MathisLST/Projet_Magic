@@ -17,6 +17,7 @@ inline bool instanceof(const T*) {
 */
 void Affiche::afficheJeu(EnJeu* jeu){
     system("clear");
+    std::cout << "MAGIC THE GATHERING by MATHIS LHOSTE & LEO LLOBERAS\n\n" << std::endl;
     std::cout << jeu->getJoueur1()->getNom() << "\nPV : \e[32m" << jeu->getJoueur1()->getPV() << "\e[0m " << std::endl;
     afficheBibliotheque(jeu->getJoueur1());
     std::cout << "\n" << std::endl;
