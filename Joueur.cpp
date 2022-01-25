@@ -10,8 +10,7 @@
         Joueur::Joueur (int pv, std::string nom, Encyclopedie* encyclopedie){
             m_nom = nom;
             m_pv = pv;
-            m_deck = encyclopedie->choisirDeck(m_nom);
-            construireDeck();
+            construireDeck(encyclopedie->choisirDeck(m_nom));
             m_bibliotheque = new Bibliotheque(m_deck);
             std::vector<Carte*> main;
             m_main = main;
@@ -470,8 +469,9 @@
         }
     }
 
-    void Joueur::construireDeck(){
-    for(int id : m_deck->getDeckIndex()){
+    void Joueur::construireDeck(Deck* deckref){
+    for(int id : deckref->getDeckIndex()){
+
         m_deck->ajouterCarte(id);
     }
 }

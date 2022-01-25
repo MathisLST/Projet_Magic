@@ -60,7 +60,7 @@ class Joueur {
         bool getCreatureReady();
         bool getAAttaque();
         void setAAttaque(bool aAttaque);
-        void construireDeck();
+        void construireDeck(Deck* deckref);
 
     
 
