@@ -1,10 +1,10 @@
 CXX=g++ -std=c++17
 CXXFLAGS=-Wall -Wextra
 
-%.o: %.cpp
+out/%.o: body/%.cpp
 	$(CXX) $(CXXFLAGS) $< -c -o $@
 
-main: body/Capacite.o body/Creature.o body/Terrain.o body/Deck.o body/Bibliotheque.o body/EnJeu.o body/Affiche.o body/Joueur.o body/Encyclopedie.o body/main.o
+main: out/Capacite.o out/Creature.o out/Terrain.o out/Deck.o out/Bibliotheque.o out/EnJeu.o out/Affiche.o out/Joueur.o out/Encyclopedie.o out/main.o
 	$(CXX) $^ -o $@
 
 .PHONY: run clean
@@ -13,4 +13,4 @@ run: main
 	./$<
 
 clean:
-	rm -f body/*.o body/*~ body/*.cores
+	rm -f out/*.o out/*~ out/*.cores
