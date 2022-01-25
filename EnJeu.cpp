@@ -104,12 +104,12 @@ void EnJeu::phasePose(Joueur* j1){
 }
 
 bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
-    if(j1->attaque()){
+    if(j1->attaque(this)){
         Affiche::afficheJeu(this);
         if(j2->getLCreature().size()>0 && j2->getCreatureReady()){
-            j2->defense(j1);
+            j2->defense(j1, this);
             Affiche::afficheJeu(this);
-            j1->choisirAttaque(j2);
+            j1->choisirAttaque(j2, this);
         }
         Affiche::afficheJeu(this);
         std::string pause;
