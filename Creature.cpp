@@ -128,13 +128,13 @@ std::vector<std::string> Creature::getCouleur(){
 void Creature::setCouleur(){
     for(Terrain::land terrain : m_coutSpecifique){
         std::string couleur = Terrain::landToColor(terrain);
-        for(int i = 0; i < (int)m_couleur.size(); i++){
+        int i;
+        for(i = 0; i < (int)m_couleur.size(); i++){
             if(couleur == m_couleur.at(i))
-                break;
-            else{
-                if(i == (int)m_couleur.size() -1)
-                    m_couleur.push_back(couleur);
-            }
+                break;    
+        }
+        if(i == (int)m_couleur.size()){
+            m_couleur.push_back(couleur);
         }
     }
 }

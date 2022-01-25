@@ -44,6 +44,7 @@ class Creature : public Carte {
         void addDefenseur(Creature* creature);
         std::vector <Terrain::land> getCoutSpecifique(); //voir si on modifie la facon de compter les terrains
         std::vector <Capacite::capaciteStatique> getCapacites();
+        
 
         void setDegagee(bool estDegagee);
         void setForce(int force);

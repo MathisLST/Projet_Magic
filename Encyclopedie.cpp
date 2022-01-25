@@ -166,14 +166,16 @@ Encyclopedie::Encyclopedie(){
     Deck* deckNoir = new Deck("Deck Noir", std::vector<int>({2,2,2,2,2,2,2,2,2,2,2,2,50,50,51,52,52,53,54,55,57,58,58,59,61,61,62,67,68,72}), this);
     Deck* deckRouge = new Deck("Deck Rouge", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,73,74,74,75,76,76,77,82,82,85,87,87,88,89,89,90,93,94}), this);
     Deck* deckVert = new Deck("Deck Vert", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,98,99,99,103,104,105,107,109,109,110,111,115,115,116,117,117,118,119}), this);
-    Deck* deckToucher = new Deck("Deck Vert", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,108,108,108,108,108,4,4,4,4,4,4,4,4,4,4,108,108,108}), this);
-    Deck* deckMenace = new Deck("Deck Vert", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,75,75,75,75,75,3,3,3,3,3,3,3,3,3,3,75,75,75}), this);
+    Deck* deckMulti = new Deck("Deck Multi", std::vector<int>({0,1,2,3,4,0,1,2,3,0,1,2,3,4,120,121,122,123,124,125,126,127,128,129,130,0,1,2,3,4}), this);
+    Deck* deckToucher = new Deck("Deck Toucher", std::vector<int>({4,4,4,4,4,4,4,4,4,4,4,4,108,108,108,108,108,4,4,4,4,4,4,4,4,4,4,108,108,108}), this);
+    Deck* deckMenace = new Deck("Deck Menace", std::vector<int>({3,3,3,3,3,3,3,3,3,3,3,3,75,75,75,75,75,3,3,3,3,3,3,3,3,3,3,75,75,75}), this);
 
     m_decks.push_back(deckBlanc);
     m_decks.push_back(deckBleu);
     m_decks.push_back(deckNoir);
     m_decks.push_back(deckRouge);
     m_decks.push_back(deckVert);
+    m_decks.push_back(deckMulti);
     m_decks.push_back(deckToucher);
     m_decks.push_back(deckMenace);
 }
