@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Terrain.hpp"
+#include "../headers/Terrain.hpp"
 
 
 Terrain::Terrain(land landType){

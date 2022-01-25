@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Carte.hpp"
+#include "../headers/Carte.hpp"
 
 class Terrain : public Carte {
     public :

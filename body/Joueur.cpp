@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Joueur.hpp"
+#include "../headers/Joueur.hpp"
 
 Joueur::Joueur() {}
 

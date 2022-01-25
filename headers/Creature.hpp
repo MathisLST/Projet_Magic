@@ -4,9 +4,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Terrain.hpp"
-#include "Capacite.hpp"
-#include "Carte.hpp"
+#include "../headers/Terrain.hpp"
+#include "../headers/Capacite.hpp"
+#include "../headers/Carte.hpp"
 
 
 

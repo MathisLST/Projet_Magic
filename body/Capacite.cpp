@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Capacite.hpp"
+#include "../headers/Capacite.hpp"
 
 
 Capacite::Capacite(capaciteStatique capaciteStatique){

@@ -4,10 +4,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "Carte.hpp"
-#include "Creature.hpp"
-#include "Terrain.hpp"
-#include "Deck.hpp"
+#include "../headers/Carte.hpp"
+#include "../headers/Creature.hpp"
+#include "../headers/Terrain.hpp"
+#include "../headers/Deck.hpp"
 
 class Deck;
 class Encyclopedie{

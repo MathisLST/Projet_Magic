@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <random>
-#include "Bibliotheque.hpp"
+#include "../headers/Bibliotheque.hpp"
 
 Bibliotheque::Bibliotheque(){}
 

@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "Carte.hpp"
-#include "Terrain.hpp"
-#include "Creature.hpp"
-#include "Joueur.hpp"
-#include "Affiche.hpp"
+#include "../headers/Carte.hpp"
+#include "../headers/Terrain.hpp"
+#include "../headers/Creature.hpp"
+#include "../headers/Joueur.hpp"
+#include "../headers/Affiche.hpp"
 
 
 class EnJeu{

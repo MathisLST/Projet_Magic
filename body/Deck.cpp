@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
-#include "Deck.hpp"
+#include "../headers/Deck.hpp"
 
 Deck::Deck(){}
 
