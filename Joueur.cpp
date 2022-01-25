@@ -144,7 +144,7 @@
             }
         }
 
-        bool Joueur::attaque(){
+        bool Joueur::attaque(EnJeu* enJeu){
             
 
             bool choix = true;
@@ -187,6 +187,7 @@
                                 }
                                 m_LCreature.at(carte-1)->setAttaque(true);
                                 setAAttaque(true);
+                                Affiche::afficheJeu(enJeu);
                             }else{
                                 std::cout << "Cette creature ne peut pas attaquer !" << std::endl;
                             }
@@ -212,7 +213,7 @@
         }
 
 
-    void Joueur::defense(Joueur* joueur2){
+    void Joueur::defense(Joueur* joueur2, EnJeu* enJeu){
         std::string defense;
         do{
             std::cout << m_nom << " voulez-vous defendre ? ('o' oui, 'n' non) " << std::endl;
@@ -258,6 +259,7 @@
                                         } else{
                                             joueur2->addDefenseur(surQui-1, m_LCreature.at(avecQui-1));
                                             m_LCreature.at(avecQui-1)->setDegagee(false);
+                                            Affiche::afficheJeu(enJeu);
                                             
                                         }
                                     }else{
@@ -294,6 +296,7 @@
                                     } else{
                                         joueur2->addDefenseur(surQui-1, m_LCreature.at(avecQui-1));
                                         m_LCreature.at(avecQui-1)->setDegagee(false);
+                                        Affiche::afficheJeu(enJeu);
                                     }
                                 }else{
                                     std::cout << "Cette carte est engagee !" << std::endl;
@@ -325,7 +328,7 @@
         } while (defense != "o" && defense != "n");  
     }
 
-    void Joueur::choisirAttaque(Joueur* j2){
+    void Joueur::choisirAttaque(Joueur* j2, EnJeu* enJeu){
         int i = 1;
         for(Creature* creatureA : m_LCreature){
             if(creatureA->getAttaque() && (int)creatureA->getEstDefenduPar().size()>1){
@@ -344,6 +347,7 @@
                         for (Creature* creature : creatureA->getEstDefenduPar()){
                             if(creature == j2->getLCreature().at(carte - 1)){
                                 creatureA->swap(index, y);
+                                Affiche::afficheJeu(enJeu);
                             }
                             index++;
                         }
