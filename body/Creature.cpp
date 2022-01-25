@@ -17,10 +17,9 @@ Creature::Creature(std::string nom, std::string type, int const basedEndurance ,
     m_attaque = false;
     m_coutSpecifique = coutSpec;
     setCouleur();
-
     m_coutTotal = m_coutQuelconque;
     m_cptCoutSpec = std::vector<int>(5, 0);
-    // voir si on prefere garder dans creature un vector de typeTerrain ou un vector<int> qui compte le nombre de terrain
+    
     for(Terrain::land terrain : coutSpec){
         int index = static_cast<int>(terrain); // voir si il ne faut pas sortir int du for
         m_cptCoutSpec.at(index) += 1;

@@ -7,7 +7,9 @@
 
 class Carte {
     protected :
+        // booléen true si la carte n'est pas engagee, false sinon
         bool m_degagee;
+        // booléen true si la carte est une creature, false si c'est un terrain
         bool m_creature;
     
     public :

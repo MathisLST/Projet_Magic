@@ -8,14 +8,15 @@
 
 class Capacite{
     public :
+        // liste des capacites statiques implementees
         enum capaciteStatique{
             VOL = 0,
             PORTEE,
             VIGILANCE,
             CONTACTMORTEL,
             DEFENSEUR,
-            INITIATIVE,
-            DOUBLEINITIATIVE,
+            INITIATIVE,         // TODO
+            DOUBLEINITIATIVE,   // TODO
             HATE,
             IMBLOCABLE,
             LIENDEVIE,
@@ -33,7 +34,8 @@ class Capacite{
 
         capaciteStatique getCapaciteStatique();
 
-        static const char* capaToString(capaciteStatique capacite, bool abregee) throw();
+        // Prend en paramètre une capacite et renvoie sa facon de l'afficher sous forme de string
+        static const char* capaToString(capaciteStatique capacite, bool abregee = false);
 
     private : 
         capaciteStatique m_capaciteStatique;

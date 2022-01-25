@@ -35,7 +35,7 @@ int Terrain::getLandIndex(){
     else return -1; // verifier
 }
 
-const char* Terrain::landToString(int i, bool abregee) throw(){
+const char* Terrain::landToString(int i, bool abregee){
     switch (static_cast<land>(i))
     {
         case Terrain::PLAINE: if (!abregee) {return "\e[97mPLAINE\e[0m" ;} else return "\e[97mP\e[0m";
@@ -47,7 +47,7 @@ const char* Terrain::landToString(int i, bool abregee) throw(){
     }
 }
 
-const char* Terrain::landToColor(Terrain::land land) throw(){
+const char* Terrain::landToColor(Terrain::land land){
     switch (land)
     {
         case Terrain::PLAINE: return "BLANC";

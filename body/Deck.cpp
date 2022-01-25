@@ -12,13 +12,6 @@ Deck::Deck(std::string nom,std::vector<int> deck, Encyclopedie* encyclopedie){
     m_deckIndex = deck;
     m_encyclopedie = encyclopedie;
 }
-/*
-Deck::Deck (std::string nom, std::vector<Carte*> deck, Encyclopedie* encyclopedie){ // ici encyclopedie pas tres utile en arguments
-    m_nom = nom;
-    std::vector<Carte*> m_deck;
-    m_deck = deck;
-    m_encyclopedie = encyclopedie;
-} */
 
 Deck::~Deck(){
     for(Carte* carte : m_deck){

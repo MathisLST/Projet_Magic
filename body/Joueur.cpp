@@ -508,8 +508,8 @@ void Joueur::setTerrainPose(bool b)
 }
 
 void Joueur::majCptTerrainPrets()
-{                                             // ajouter cette fonction a la fin de la phase de desengagement pour maj le cpt
-    std::vector<int> m_cptTerrainPrets(5, 0); // voir si il ne faut pas faire un for pour mettre les valeurs a 0
+{                                       
+    std::vector<int> m_cptTerrainPrets(5, 0);
     m_totalTerrainsPrets = 0;
     for (Terrain *terrain : m_LTerrain)
     {
@@ -535,7 +535,7 @@ void Joueur::ajoutCreature(int indexCarte, EnJeu *enJeu)
                 for (Terrain *terrain : m_LTerrain)
                 {
                     if (terrain->getDegagee() && terrain->getLandIndex() == i && coutSpecCopy > 0)
-                    { // degagee = desengagee
+                    {
                         terrain->setDegagee(false);
                         coutSpecCopy -= 1;
                     }
@@ -564,7 +564,7 @@ void Joueur::ajoutCreature(int indexCarte, EnJeu *enJeu)
                 for (Terrain *terrain : m_LTerrain)
                 {
                     if (terrain->getDegagee() && terrain->getLandIndex() == terrainType)
-                    { // degagee = desengagee
+                    {
                         terrain->setDegagee(false);
                         coutQuelcCopy -= 1;
                         break;
@@ -581,7 +581,7 @@ void Joueur::ajoutCreature(int indexCarte, EnJeu *enJeu)
         std::cout << "La creature " << creature->getNom() << " a ete posee" << std::endl;
         if (!creature->aLaCapacite(Capacite::HATE))
         {
-            creature->setDegagee(false); // permet de ne pas attaquer des le premier tour de la creature
+            creature->setDegagee(false);
         }
         m_main.erase(m_main.begin() + indexCarte);
         Affiche::afficheJeu(enJeu);

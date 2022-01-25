@@ -11,7 +11,7 @@ Capacite::Capacite(capaciteStatique capaciteStatique){
 Capacite::~Capacite(){}
 
 
-const char* Capacite::capaToString(capaciteStatique capacite, bool abregee) throw(){
+const char* Capacite::capaToString(capaciteStatique capacite, bool abregee){
     switch (capacite)
     {
         case Capacite::VOL: if (!abregee) {return "VOL" ;} else return "Vo";

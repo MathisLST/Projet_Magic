@@ -8,6 +8,7 @@
 
 class Bibliotheque {
     private :
+        // contient les cartes dans la bibliotheque du joueur
         std::vector<Carte*> m_bibliotheque;
 
     public :

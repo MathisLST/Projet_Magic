@@ -16,8 +16,7 @@ class Deck {
         Encyclopedie* m_encyclopedie;
     public :
         Deck();
-        Deck (std::string nom, std::vector<int> deck, Encyclopedie* encyclopedie); // reference ?
-        //Deck (std::string nom, std::vector<Carte*> deck, Encyclopedie* encyclopedie); //reference ?
+        Deck (std::string nom, std::vector<int> deck, Encyclopedie* encyclopedie);
         ~Deck();
         std::vector<int> getDeckIndex();
         std::vector<Carte*> getDeck();

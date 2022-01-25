@@ -93,7 +93,6 @@ void EnJeu::phasePose(Joueur* j1){
             std::cout << "Le numero rentre n'est pas valide !" << std::endl;
         }
         // On demande si le joueur veut poser une autre carte
-    
         do{
             std::cout << "Voulez-vous poser une autre carte ? o/n" << std::endl;
             std::cin >> rep;

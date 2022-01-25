@@ -4,9 +4,6 @@
 #include "../headers/Encyclopedie.hpp"
 
 Encyclopedie::Encyclopedie(){
-    //std::vector<Carte*> m_encyclopedie;
-    //std::vector<Deck*> m_decks; // vector de decks sous forme d'int (id des cartes dans l'encyclopedie)
-
     // Reference : Edition de base 2021
 
     // TERRAINS /* 0 a 4 */
@@ -22,12 +19,12 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Chien de garde alpin", "chien", 2, 2, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VIGILANCE})));
     m_encyclopedie.push_back(new Creature("Choriste consacre", "humain et clerc", 1, 1, 0, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::LIENDEVIE})));
     m_encyclopedie.push_back(new Creature("Maitre du troupeau avemain", "oiseau et guerrier", 3, 4, 3, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
-    m_encyclopedie.push_back(new Creature("Ange pourfendeur", "ange", 5, 5, 3, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL, Capacite::INITIATIVE, Capacite::LIENDEVIE}))); // existe aussi protection contre types de creatures
+    m_encyclopedie.push_back(new Creature("Ange pourfendeur", "ange", 5, 5, 3, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL, Capacite::INITIATIVE, Capacite::LIENDEVIE})));
     m_encyclopedie.push_back(new Creature("Acolyte de Basri", "chat et clerc", 3, 2, 2, std::vector<Terrain::land>({Terrain::PLAINE, Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::LIENDEVIE})));
-    m_encyclopedie.push_back(new Creature("Lieutenant de Basri", "humain et chevalier", 4, 3, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VIGILANCE}))); // protection multicolore
+    m_encyclopedie.push_back(new Creature("Lieutenant de Basri", "humain et chevalier", 4, 3, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VIGILANCE})));
     m_encyclopedie.push_back(new Creature("Argousine celeste", "humain et clerc", 3, 2, 2, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Pegase de Concordia", "pegase", 3, 1, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
-    m_encyclopedie.push_back(new Creature("Pretresse du confinement", "humain et clerc", 2, 2, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({}))); // flash
+    m_encyclopedie.push_back(new Creature("Pretresse du confinement", "humain et clerc", 2, 2, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Batailleur de l'aube", "licorne", 1, 3, 1, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Experte fauconniere", "humain et soldat", 3, 2, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Voltigeur des bourrasques", "griffon", 2, 3, 3, std::vector<Terrain::land>({Terrain::PLAINE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
@@ -94,7 +91,7 @@ Encyclopedie::Encyclopedie(){
 
     // MONTAGNE /* 73 a 94 */
     m_encyclopedie.push_back(new Creature("Shamane a crecelle de guerre", "gobelin et shamane", 2, 2, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
-    m_encyclopedie.push_back(new Creature("Chien d'eclair", "elemental et chien", 2, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE}))); // celerite normalement
+    m_encyclopedie.push_back(new Creature("Chien d'eclair", "elemental et chien", 2, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE})));
     m_encyclopedie.push_back(new Creature("Brute de la fosse aux ossements", "cyclope", 5, 4, 4, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::MENACE})));
     m_encyclopedie.push_back(new Creature("Taquineur effronte", "gobelin", 1, 1, 4, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Incinerateur de Chandra", "elemental", 6, 6, 5, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PIETINEMENT})));
@@ -108,11 +105,11 @@ Encyclopedie::Encyclopedie(){
     m_encyclopedie.push_back(new Creature("Chatieur escouflenfer", "dragon", 6, 6, 5, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
     m_encyclopedie.push_back(new Creature("Fielleux croque pieds", "diable", 1, 2, 1, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PIETINEMENT})));
     m_encyclopedie.push_back(new Creature("Cabot ignescent", "elemental et chien", 2, 1, 1, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
-    m_encyclopedie.push_back(new Creature("Augure cinétique", "humain et shamane", 4, 3, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PIETINEMENT}))); // attaque depend normalement de son passif
+    m_encyclopedie.push_back(new Creature("Augure cinétique", "humain et shamane", 4, 3, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PIETINEMENT})));
     m_encyclopedie.push_back(new Creature("Ogre onakke", "ogre et guerrier", 2, 4, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Diables brulegoudron", "diable", 3, 3, 4, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
     m_encyclopedie.push_back(new Creature("Anomalie englousorts", "anomalie", 2, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({})));
-    m_encyclopedie.push_back(new Creature("Soubira, cavaniere des Tulzidi", "humain et shamane", 3, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE}))); // celerite normalement
+    m_encyclopedie.push_back(new Creature("Soubira, cavaniere des Tulzidi", "humain et shamane", 3, 2, 2, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::HATE})));
     m_encyclopedie.push_back(new Creature("Terreur des pics", "dragon", 4, 5, 3, std::vector<Terrain::land>({Terrain::MONTAGNE, Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::VOL})));
     m_encyclopedie.push_back(new Creature("Ogre des tourelles", "ogre et guerrier", 3, 4, 3, std::vector<Terrain::land>({Terrain::MONTAGNE}), std::vector<Capacite::capaciteStatique>({Capacite::PORTEE})));
 
