@@ -458,7 +458,7 @@ void Joueur::choisirAttaque(Joueur *j2, EnJeu *enJeu)
             int carte;
             for (int y = 0; y < (int)creatureA->getEstDefenduPar().size() - 1; y++)
             {
-                std::cout << "Quelle carte voulez-vous defendre en " << y + 1 << " ? " << std::endl;
+                std::cout << m_nom << ", quelle carte voulez-vous frapper en " << y + 1 << " ? " << std::endl;
                 while (!(std::cin >> carte))
                 {
                     std::cout << "Numero de carte invalide, veuillez rentrer un entier !" << std::endl;
