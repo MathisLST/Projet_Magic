@@ -114,6 +114,11 @@ void Joueur::addDefenseur(int pos, Creature *creature)
 {
     m_LCreature.at(pos)->addDefenseur(creature);
 }
+void Joueur::resetEstDefenduPar(){
+    for(Creature* creature : m_LCreature){
+        creature->resetEstDefenduPar();
+    }
+}
 
 bool Joueur::piocher(int nbrCartes)
 {
@@ -303,7 +308,7 @@ bool Joueur::peutDefendre(Creature* creatureA, Creature* creatureD){
     }
 }
 
-void Joueur::choixDefenseur(Joueur* joueur2, int surQui)
+void Joueur::choixDefenseur(Joueur* joueur2, int surQui, EnJeu* enJeu)
 {
     int avecQui;
     std::cout << "Avec qui voulez-vous defendre ? " << std::endl;
@@ -324,6 +329,7 @@ void Joueur::choixDefenseur(Joueur* joueur2, int surQui)
         {
             joueur2->addDefenseur(surQui - 1, m_LCreature.at(avecQui - 1));
             m_LCreature.at(avecQui - 1)->setDegagee(false);
+            Affiche::afficheJeu(enJeu);
         }
     }
     else
@@ -371,8 +377,8 @@ void Joueur::defense(Joueur *joueur2, EnJeu *enJeu)
                             bool continuer = true;
                             while (joueur2->getLCreature().at(surQui - 1)->getEstDefenduPar().size() < 2 && continuer == true)
                             {
-                                choixDefenseur(joueur2, surQui);
-                                Affiche::afficheJeu(enJeu);
+                                choixDefenseur(joueur2, surQui, enJeu);
+                                
                                 if (joueur2->getLCreature().at(surQui - 1)->getEstDefenduPar().size() > 2)
                                 {
                                     std::string c;
@@ -399,8 +405,7 @@ void Joueur::defense(Joueur *joueur2, EnJeu *enJeu)
                     }
                     else if (joueur2->getLCreature().at(surQui - 1)->getAttaque() && !joueur2->getLCreature().at(surQui - 1)->aLaCapacite(Capacite::IMBLOCABLE))
                     {
-                        choixDefenseur(joueur2, surQui);
-                        Affiche::afficheJeu(enJeu);
+                        choixDefenseur(joueur2, surQui, enJeu);
 
                     }
                     else if (joueur2->getLCreature().at(surQui - 1)->aLaCapacite(Capacite::IMBLOCABLE))

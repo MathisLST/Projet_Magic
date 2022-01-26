@@ -144,3 +144,7 @@ bool Creature::aLaCouleur(std::string couleur){
     }
     return false;
 }
+
+void Creature::resetEstDefenduPar(){
+    m_estDefenduPar.clear();
+}

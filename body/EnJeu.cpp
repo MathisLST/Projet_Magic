@@ -130,43 +130,63 @@ bool EnJeu::phaseCombat(Joueur* j1, Joueur* j2){
                     return false;
                 }
             }else{
-
+                int i = (int) creature->getEstDefenduPar().size();
                 for(Creature* creatureD : creature->getEstDefenduPar()){
+
                     if ((creatureD->aLaCapacite(Capacite::CONTACTMORTEL) && creatureD->getForce() > 0 ) && ( creature->aLaCapacite(Capacite::CONTACTMORTEL) && creature->getForce() > 0)){
                         creatureD->setEndurance(- (creature->getForce() - 1));
                         creature->setEndurance(- (creatureD->getForce() - 1));
+
                     }else if(creatureD->aLaCapacite(Capacite::CONTACTMORTEL) && creatureD->getForce() > 0){
                         creatureD->setEndurance(creatureD->getEndurance() - creature->getForce());
                         creature->setEndurance(- (creatureD->getForce() - 1));
+
+
                     }else if (creature->aLaCapacite(Capacite::CONTACTMORTEL) && creature->getForce() > 0){
                         creatureD->setEndurance(- (creature->getForce() - 1));
                         creature->setEndurance(creature->getEndurance() - creatureD->getForce());
-                    }else{ 
+
+                        creature->setForce(creature->getForce()-1);
+
+
+                    }else if (creature->getForce() > 0){
                         creatureD->setEndurance(creatureD->getEndurance() - creature->getForce());
                         creature->setEndurance(creature->getEndurance() - creatureD->getForce());
+
+                        creature->setForce(- creatureD->getEndurance());
                     }
 
-                    if ( creature->aLaCapacite(Capacite::PIETINEMENT) && creatureD->getEndurance() <= 0){
-                        j2->setPv(j2->getPV() + creatureD->getEndurance());
-                    }
-
-                    if(creature->aLaCapacite(Capacite::LIENDEVIE)){
-                        j1->setPv(j1->getPV() + creature->getForce());
-                    }
                     if(creatureD->aLaCapacite(Capacite::LIENDEVIE)){
                         j2->setPv(j2->getPV() + creature->getForce());
                     }
                     
 
                     if(creature->getEndurance() <= 0 && creatureD->getEndurance() <= 0){
+                         if(creature->aLaCapacite(Capacite::LIENDEVIE)){
+                            j1->setPv(j1->getPV() + creature->getBasedForce());
+                         }
                         j1->mortAuCombat(creature);
                         j2->mortAuCombat(creatureD);
                         break;
+
                     }else if(creature->getEndurance() <= 0 ){
+                        if(creature->aLaCapacite(Capacite::LIENDEVIE)){
+                            j1->setPv(j1->getPV() + creature->getBasedForce());
+                        }   
                         j1->mortAuCombat(creature);
+                        
                         break;
                     }else if(creatureD->getEndurance() <= 0 ){
                         j2->mortAuCombat(creatureD);
+                        i--;
+                        if ( i == 0 ){
+                            if( creature->aLaCapacite(Capacite::PIETINEMENT) && creature->getForce() > 0 )
+                                j2->setPv(j2->getPV() - creature->getForce()); 
+                            
+                            if(creature->aLaCapacite(Capacite::LIENDEVIE)){
+                                j1->setPv(j1->getPV() + creature->getBasedForce());
+                            }   
+                        }
                     } 
                 }
             }
@@ -185,7 +205,8 @@ void EnJeu::phaseFinTour(Joueur* j1, Joueur* j2){
     j2->setTerrainPose(false);
     j1->setAAttaque(false);
     j2->setAAttaque(false);
-
+    j1->resetEstDefenduPar();
+    j2->resetEstDefenduPar();
 }
 
 bool EnJeu::tour(Joueur* j1, Joueur* j2){

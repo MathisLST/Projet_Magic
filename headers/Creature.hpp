@@ -71,6 +71,7 @@ class Creature : public Carte {
         void swap(int pos1, int pos2);
         bool aLaCapacite(Capacite::capaciteStatique capacite);
         bool aLaCouleur(std::string couleur);
+        void resetEstDefenduPar();
         
 
         
